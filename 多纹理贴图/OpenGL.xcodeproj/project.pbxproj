@@ -23,6 +23,8 @@
 		75B0448A26F1EFC500B2286D /* 王路飞.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 75B0448926F1EFC500B2286D /* 王路飞.jpeg */; };
 		75B0448C26F1EFF400B2286D /* wall.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 75B0448B26F1EFF400B2286D /* wall.jpeg */; };
 		75B0448F26F2D40000B2286D /* FileLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B0448E26F2D40000B2286D /* FileLoader.m */; };
+		75B0449126F2EB3600B2286D /* smile.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 75B0449026F2EB3600B2286D /* smile.jpeg */; };
+		75B0449326F2ED9E00B2286D /* awesomeface.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B0449226F2ED9E00B2286D /* awesomeface.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		75B0448B26F1EFF400B2286D /* wall.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall.jpeg; sourceTree = "<group>"; };
 		75B0448D26F2D40000B2286D /* FileLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileLoader.h; sourceTree = "<group>"; };
 		75B0448E26F2D40000B2286D /* FileLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileLoader.m; sourceTree = "<group>"; };
+		75B0449026F2EB3600B2286D /* smile.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smile.jpeg; sourceTree = "<group>"; };
+		75B0449226F2ED9E00B2286D /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 		75B0445E26F051BC00B2286D /* OpenGL */ = {
 			isa = PBXGroup;
 			children = (
+				75B0449226F2ED9E00B2286D /* awesomeface.png */,
+				75B0449026F2EB3600B2286D /* smile.jpeg */,
 				75B0448B26F1EFF400B2286D /* wall.jpeg */,
 				75B0448926F1EFC500B2286D /* 王路飞.jpeg */,
 				75B0448526F09F5100B2286D /* Util */,
@@ -191,9 +197,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75B0449126F2EB3600B2286D /* smile.jpeg in Resources */,
 				75B0446F26F051BF00B2286D /* LaunchScreen.storyboard in Resources */,
 				75B0448226F0735D00B2286D /* fragmentShader.glsl in Resources */,
 				75B0448C26F1EFF400B2286D /* wall.jpeg in Resources */,
+				75B0449326F2ED9E00B2286D /* awesomeface.png in Resources */,
 				75B0448A26F1EFC500B2286D /* 王路飞.jpeg in Resources */,
 				75B0446C26F051BF00B2286D /* Assets.xcassets in Resources */,
 				75B0446A26F051BD00B2286D /* Main.storyboard in Resources */,
