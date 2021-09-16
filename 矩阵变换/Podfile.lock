@@ -1,0 +1,16 @@
+PODS:
+  - glm (0.9.4.6)
+
+DEPENDENCIES:
+  - glm
+
+SPEC REPOS:
+  trunk:
+    - glm
+
+SPEC CHECKSUMS:
+  glm: e22c8d9df10404059b19c2952f9fa44d9a9f3056
+
+PODFILE CHECKSUM: 269e9020c0c5bda1d3a9426ec961ab2edf5a7a9a
+
+COCOAPODS: 1.10.1
