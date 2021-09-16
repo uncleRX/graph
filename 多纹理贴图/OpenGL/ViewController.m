@@ -10,6 +10,7 @@
 #import <OpenGLES/ES3/glext.h>
 #import "CGLView.h"
 #import "GLESUtil.h"
+#import "FileLoader.h"
 
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.height
@@ -47,10 +48,9 @@
     
     // 指定顶点数据
     float vertices[] = {
-        // 后面2个时纹理坐标
-        0.0f, 0.5f, 0.0f, 0.5f, 1.f,
-         0.5f, -0.5f, 0.0f, 1.f, 0.f,
-        -0.5f, -0.5f, 0.0f, 0.f, 0.f
+        0.0f, 0.5f, 0.0f, 0.5f, 0.f,
+         0.5f, -0.5f, 0.0f, 1.f, 1.f,
+        -0.5f, -0.5f, 0.0f, 0.f, 1.f,
     };
     
     // 顶点缓存
@@ -78,16 +78,9 @@
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
     // 生成纹
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"王路飞" ofType:@"jpeg"];
-    NSData *textureData = [NSData dataWithContentsOfFile:path];
-    UIImage *img = [UIImage imageWithData:textureData];
-    width = CGImageGetWidth(img.CGImage);
-    height = CGImageGetHeight(img.CGImage);
-    
-    CGImageRef cgImage = img.CGImage;
-    CFDataRef provider  = CGDataProviderCopyData(CGImageGetDataProvider(cgImage));
-    GLubyte* imageData = (GLubyte *)CFDataGetBytePtr(provider);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
+    ImageFile *file = [FileLoader loadImage:@"王路飞" type:@"jpeg"];
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, file.width, file.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, file.byte);
     int ourTextureLocation = glGetUniformLocation(shaderProgram, "ourTexture");
     glUniform1i(ourTextureLocation, 0);
     
