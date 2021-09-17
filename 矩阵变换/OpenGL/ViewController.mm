@@ -19,6 +19,8 @@
 
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.height
+#define CHECK_ERROR     int result = glGetError(); \
+                        NSLog(@"result = %d",result);
 
 @interface ViewController ()
 {
@@ -54,18 +56,19 @@
     glClearColor(1, 1, 1, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     
-    glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
     glm::mat4 trans;
-    trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f));
-    vec = trans * vec;
+    trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+    trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
+    
+    unsigned int transformLoc = glGetUniformLocation(shaderProgram, "transform");
+    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+    
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     [context presentRenderbuffer:renderBuff];
 }
 
 - (IBAction)scaleAction:(id)sender {
     
-
-
 }
 
 - (void)_drawATriangle {
@@ -98,14 +101,25 @@
     glGenBuffers(1, &EBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    glUseProgram(shaderProgram);
+
+    glm::mat4 trans = glm::mat4(1.0f);
+    trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+    int transformLocation = glGetUniformLocation(shaderProgram, "transform");
+    //将 transform的值 设置给着色器中的 transform变量
+    glUniformMatrix4fv(transformLocation, 1, GL_FALSE, glm::value_ptr(trans));
+    CHECK_ERROR
+    
+    GLint podsL = glGetAttribLocation(shaderProgram, "aPos");
+    GLint coordL = glGetAttribLocation(shaderProgram, "aTexCoord");
 
     // 复制顶点数据到缓存对象中供GPU使用
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, (3+2) * sizeof(float), (void*)0);
+    glVertexAttribPointer(podsL, 3, GL_FLOAT, GL_FALSE, (3+2) * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
     
     // 纹理数据
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glVertexAttribPointer(coordL, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
     
     // 生成纹理1
@@ -139,10 +153,9 @@
     glGenerateMipmap(GL_TEXTURE_2D);
 
     //告诉OpenGL每个着色器采样器属于哪个纹理单元
-    int location1 = glGetUniformLocation(shaderProgram, "texture1");
-    int location2 = glGetUniformLocation(shaderProgram, "texture2");
-     
-    glUseProgram(shaderProgram);
+    unsigned int location1 = glGetUniformLocation(shaderProgram, "texture1");
+    unsigned int location2 = glGetUniformLocation(shaderProgram, "texture2");
+
     glUniform1i(location1, 0);
     glUniform1i(location2, 4);
 
