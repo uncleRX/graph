@@ -83,8 +83,8 @@
     
     static float angle;
     model = glm::rotate(model, angle, glm::vec3(0.5f, 1.f, 0.f));
-    view  = glm::translate(view, glm::vec3(0.0f, 0.0f, -500));
-    projection = glm::perspective(glm::radians(45.0f), aspect, 0.1f, 1000.f);
+    view  = glm::translate(view, glm::vec3(0.0f, 0.0f, -500.f));
+    projection = glm::perspective(glm::radians(60.0f), aspect, 100.f, 1000.f);
     
     glBindVertexArray(VAO);
     
@@ -262,7 +262,7 @@
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &width);
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &height);
     
-    glBindRenderbuffer(GL_RENDERBUFFER, deepthBuff);
+    glBindRenderbuffer(GL_RENDERBUFFER, self->deepthBuff);
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, width, height);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, self->deepthBuff);
 }
