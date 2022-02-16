@@ -8,6 +8,7 @@
 #ifndef STDBuild_hpp
 #define STDBuild_hpp
 
-#include <stdio.h>
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 
 #endif /* STDBuild_hpp */

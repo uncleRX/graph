@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (Util)
 
+- (UIImage *)rotate:(UIImageOrientation)orient;
+
 @end
 
 NS_ASSUME_NONNULL_END

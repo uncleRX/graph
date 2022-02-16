@@ -5,7 +5,6 @@ layout (location = 1) in vec2 aTexCoord;
 
 out vec2 TexCoord; // 纹理坐标输出
 
-
 void main()
 {
     gl_Position = vec4(aPos, 1.0);
