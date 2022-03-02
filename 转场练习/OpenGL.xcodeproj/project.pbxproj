@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4306F11C1A6D8F0FAB382D9A /* Pods_OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C0856B8BE997E4326037AE /* Pods_OpenGL.framework */; };
 		754A689E27BDDBB800A460CF /* awesomeface.png in Resources */ = {isa = PBXBuildFile; fileRef = 754A689D27BDDBB800A460CF /* awesomeface.png */; };
 		754A68A127BDE7F200A460CF /* ImageHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 754A68A027BDE7F200A460CF /* ImageHelper.mm */; };
 		75B0446126F051BC00B2286D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B0446026F051BC00B2286D /* AppDelegate.m */; };
@@ -26,13 +27,13 @@
 		75EDE27927BCCAB800D7CD26 /* 1920x1080_2点1M.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 75EDE27827BCCAB800D7CD26 /* 1920x1080_2点1M.jpg */; };
 		75EDE27D27BCCFF700D7CD26 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 75EDE27C27BCCFF700D7CD26 /* UIImage+Util.m */; };
 		75EDE28427BCF6D100D7CD26 /* STDBuild.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75EDE28227BCF6D100D7CD26 /* STDBuild.cpp */; };
-		75EDE28A27BD04A900D7CD26 /* fragmentShader1.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 75EDE28627BD04A900D7CD26 /* fragmentShader1.glsl */; };
-		75EDE28B27BD04A900D7CD26 /* vertexShader1.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 75EDE28727BD04A900D7CD26 /* vertexShader1.glsl */; };
 		75EDE28F27BD04C700D7CD26 /* fragmentShader2.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 75EDE28D27BD04C700D7CD26 /* fragmentShader2.glsl */; };
 		75EDE29027BD04C700D7CD26 /* vertexShader2.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 75EDE28E27BD04C700D7CD26 /* vertexShader2.glsl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A6D7E31C638AAAEF6C3DEB5 /* Pods-OpenGL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenGL.release.xcconfig"; path = "Target Support Files/Pods-OpenGL/Pods-OpenGL.release.xcconfig"; sourceTree = "<group>"; };
+		23C0856B8BE997E4326037AE /* Pods_OpenGL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenGL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		754A689D27BDDBB800A460CF /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
 		754A689F27BDE7EE00A460CF /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
 		754A68A027BDE7F200A460CF /* ImageHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageHelper.mm; sourceTree = "<group>"; };
@@ -65,10 +66,9 @@
 		75EDE28127BCF4F000D7CD26 /* stb_image_resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image_resize.h; sourceTree = "<group>"; };
 		75EDE28227BCF6D100D7CD26 /* STDBuild.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = STDBuild.cpp; sourceTree = "<group>"; };
 		75EDE28327BCF6D100D7CD26 /* STDBuild.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = STDBuild.hpp; sourceTree = "<group>"; };
-		75EDE28627BD04A900D7CD26 /* fragmentShader1.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragmentShader1.glsl; sourceTree = "<group>"; };
-		75EDE28727BD04A900D7CD26 /* vertexShader1.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertexShader1.glsl; sourceTree = "<group>"; };
 		75EDE28D27BD04C700D7CD26 /* fragmentShader2.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragmentShader2.glsl; sourceTree = "<group>"; };
 		75EDE28E27BD04C700D7CD26 /* vertexShader2.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertexShader2.glsl; sourceTree = "<group>"; };
+		866B79935D05A90C1F29A4C0 /* Pods-OpenGL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenGL.debug.xcconfig"; path = "Target Support Files/Pods-OpenGL/Pods-OpenGL.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,18 +78,29 @@
 			files = (
 				75B0447C26F0526400B2286D /* GLKit.framework in Frameworks */,
 				75B0447A26F0525E00B2286D /* OpenGLES.framework in Frameworks */,
+				4306F11C1A6D8F0FAB382D9A /* Pods_OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5AEE5B7C448AB059ADF20D1F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				866B79935D05A90C1F29A4C0 /* Pods-OpenGL.debug.xcconfig */,
+				1A6D7E31C638AAAEF6C3DEB5 /* Pods-OpenGL.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		75B0445326F051BC00B2286D = {
 			isa = PBXGroup;
 			children = (
 				75B0445E26F051BC00B2286D /* OpenGL */,
 				75B0445D26F051BC00B2286D /* Products */,
 				75B0447826F0525E00B2286D /* Frameworks */,
+				5AEE5B7C448AB059ADF20D1F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +146,7 @@
 			children = (
 				75B0447B26F0526400B2286D /* GLKit.framework */,
 				75B0447926F0525E00B2286D /* OpenGLES.framework */,
+				23C0856B8BE997E4326037AE /* Pods_OpenGL.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -144,8 +156,6 @@
 			children = (
 				75EDE28E27BD04C700D7CD26 /* vertexShader2.glsl */,
 				75EDE28D27BD04C700D7CD26 /* fragmentShader2.glsl */,
-				75EDE28627BD04A900D7CD26 /* fragmentShader1.glsl */,
-				75EDE28727BD04A900D7CD26 /* vertexShader1.glsl */,
 			);
 			path = GLSL;
 			sourceTree = "<group>";
@@ -189,6 +199,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75B0447526F051BF00B2286D /* Build configuration list for PBXNativeTarget "OpenGL" */;
 			buildPhases = (
+				99D193DEB0D67AE7CAF0AC0D /* [CP] Check Pods Manifest.lock */,
 				75B0445826F051BC00B2286D /* Sources */,
 				75B0445926F051BC00B2286D /* Frameworks */,
 				75B0445A26F051BC00B2286D /* Resources */,
@@ -242,11 +253,9 @@
 				75EDE27927BCCAB800D7CD26 /* 1920x1080_2点1M.jpg in Resources */,
 				75B0448C26F1EFF400B2286D /* wall.jpeg in Resources */,
 				75B0448A26F1EFC500B2286D /* 王路飞.jpeg in Resources */,
-				75EDE28B27BD04A900D7CD26 /* vertexShader1.glsl in Resources */,
 				75B0446C26F051BF00B2286D /* Assets.xcassets in Resources */,
 				75EDE27727BCCAAE00D7CD26 /* 4K_老虎.JPG in Resources */,
 				75EDE28F27BD04C700D7CD26 /* fragmentShader2.glsl in Resources */,
-				75EDE28A27BD04A900D7CD26 /* fragmentShader1.glsl in Resources */,
 				75EDE29027BD04C700D7CD26 /* vertexShader2.glsl in Resources */,
 				754A689E27BDDBB800A460CF /* awesomeface.png in Resources */,
 				75B0446A26F051BD00B2286D /* Main.storyboard in Resources */,
@@ -254,6 +263,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		99D193DEB0D67AE7CAF0AC0D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OpenGL-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		75B0445826F051BC00B2286D /* Sources */ = {
@@ -408,6 +442,7 @@
 		};
 		75B0447626F051BF00B2286D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 866B79935D05A90C1F29A4C0 /* Pods-OpenGL.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -426,6 +461,7 @@
 		};
 		75B0447726F051BF00B2286D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A6D7E31C638AAAEF6C3DEB5 /* Pods-OpenGL.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
