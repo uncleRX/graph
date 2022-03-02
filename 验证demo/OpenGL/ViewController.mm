@@ -37,6 +37,7 @@
     [self _EBOdrawATriangle];
 }
 
+// 渲染到临时纹理
 - (void)_EBOdrawATriangle {
     self->shaderProgram = [GLESUtil creatShaderProgramWithVertextShaderName:@"vertexShader2"
                                                          fragmentShaderName:@"fragmentShader2"];
@@ -89,10 +90,10 @@
 
     // 处理纹理
     NSString *path1 = [[NSBundle mainBundle] pathForResource:@"wall.jpeg" ofType:nil];
-    GLuint texture1 = [GLESUtil genTexture:0 format:GL_RGB filePath:path1];
+    [GLESUtil genTexture:0 format:GL_RGB filePath:path1];
     
     NSString *path2 = [[NSBundle mainBundle] pathForResource:@"awesomeface.png" ofType:nil];
-    GLuint texture2 = [GLESUtil genTexture:1 format:GL_RGBA filePath:path2];
+    [GLESUtil genTexture:1 format:GL_RGBA filePath:path2];
 
     // 给采样器设置纹理单元
     glUniform1i(glGetUniformLocation(shaderProgram, "texture1"), 0); // 手动设置
@@ -101,13 +102,7 @@
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
     [context presentRenderbuffer:renderBuff];
-//
-//    glBindVertexArray(0);
-//    glDeleteVertexArrays(1, &VAO);
-//    glDeleteBuffers(1, &VBO);
-//    glDeleteBuffers(1, &EBO);
 }
-
 
 - (void)_EAOdrawATriangle {
     self->shaderProgram = [GLESUtil creatShaderProgramWithVertextShaderName:@"vertexShader1"
@@ -197,12 +192,5 @@
         return;
     }
 }
-
-- (void)_loadShader {
-    self->shaderProgram = [GLESUtil creatShaderProgramWithVertextShaderName:@"vertexShader"
-                                                         fragmentShaderName:@"fragmentShader"];
-}
-
-
 
 @end
