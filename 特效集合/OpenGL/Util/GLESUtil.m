@@ -55,13 +55,16 @@
     return shader;
 }
 
-+ (GLuint)genTexture:(int)index format:(int)pixelFormat filePath:(NSString *)path
++ (nullable TextureModel *)genTexture:(int)index
+                               format:(int)pixelFormat
+                             filePath:(NSString *)path
 {
+    TextureModel *model = [TextureModel new];
+    
     GLuint texture;
     glGenTextures(1, &texture);
     // 绑定之前需要先激活
     glActiveTexture(GL_TEXTURE0 + index);
-
     glBindTexture(GL_TEXTURE_2D, texture);
     
     // 为当前绑定的纹理对象设置环绕、过滤方式
@@ -85,7 +88,10 @@
     {
         NSLog(@"加载素材失败");
     }
-    return texture;
+    model.width = imageWidth;
+    model.height = imageHeight;
+    model.textureID = texture;
+    return model;
 }
 
 @end

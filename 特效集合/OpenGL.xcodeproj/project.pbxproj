@@ -10,6 +10,15 @@
 		4306F11C1A6D8F0FAB382D9A /* Pods_OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C0856B8BE997E4326037AE /* Pods_OpenGL.framework */; };
 		754A689E27BDDBB800A460CF /* awesomeface.png in Resources */ = {isa = PBXBuildFile; fileRef = 754A689D27BDDBB800A460CF /* awesomeface.png */; };
 		754A68A127BDE7F200A460CF /* ImageHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 754A68A027BDE7F200A460CF /* ImageHelper.mm */; };
+		758CAC8427D0580700C8F360 /* water.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 758CAC8327D0580700C8F360 /* water.jpeg */; };
+		758CAC8827D0581C00C8F360 /* wallhaven-2ew8wx.png in Resources */ = {isa = PBXBuildFile; fileRef = 758CAC8727D0581C00C8F360 /* wallhaven-2ew8wx.png */; };
+		758CAC8A27D05A1100C8F360 /* wallhaven-3kvqm9.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 758CAC8927D05A1100C8F360 /* wallhaven-3kvqm9.jpeg */; };
+		758CAC8E27D05ED800C8F360 /* vertexDefault.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 758CAC8D27D05ED800C8F360 /* vertexDefault.glsl */; };
+		758CAC9027D060EF00C8F360 /* drawOnePicture.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 758CAC8F27D060EF00C8F360 /* drawOnePicture.glsl */; };
+		758CAC9227D062E200C8F360 /* waterPicture.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 758CAC9127D062E200C8F360 /* waterPicture.glsl */; };
+		758CAC9727D08F3700C8F360 /* watermark_icon_doupai.png in Resources */ = {isa = PBXBuildFile; fileRef = 758CAC9527D08F3700C8F360 /* watermark_icon_doupai.png */; };
+		758CAC9E27D09DD600C8F360 /* TextureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 758CAC9D27D09DD600C8F360 /* TextureModel.m */; };
+		758CACA227D0A33800C8F360 /* vertex_1_map.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 758CACA127D0A33800C8F360 /* vertex_1_map.glsl */; };
 		75B0446126F051BC00B2286D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B0446026F051BC00B2286D /* AppDelegate.m */; };
 		75B0446426F051BC00B2286D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B0446326F051BC00B2286D /* SceneDelegate.m */; };
 		75B0446726F051BD00B2286D /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75B0446626F051BD00B2286D /* ViewController.mm */; };
@@ -23,8 +32,6 @@
 		75B0448826F09FB000B2286D /* GLESUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B0448726F09FB000B2286D /* GLESUtil.m */; };
 		75B0448A26F1EFC500B2286D /* 王路飞.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 75B0448926F1EFC500B2286D /* 王路飞.jpeg */; };
 		75B0448C26F1EFF400B2286D /* wall.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 75B0448B26F1EFF400B2286D /* wall.jpeg */; };
-		75EDE27727BCCAAE00D7CD26 /* 4K_老虎.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 75EDE27627BCCAAE00D7CD26 /* 4K_老虎.JPG */; };
-		75EDE27927BCCAB800D7CD26 /* 1920x1080_2点1M.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 75EDE27827BCCAB800D7CD26 /* 1920x1080_2点1M.jpg */; };
 		75EDE27D27BCCFF700D7CD26 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 75EDE27C27BCCFF700D7CD26 /* UIImage+Util.m */; };
 		75EDE28427BCF6D100D7CD26 /* STDBuild.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75EDE28227BCF6D100D7CD26 /* STDBuild.cpp */; };
 		75EDE28F27BD04C700D7CD26 /* fragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 75EDE28D27BD04C700D7CD26 /* fragmentShader.glsl */; };
@@ -37,6 +44,16 @@
 		754A689D27BDDBB800A460CF /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
 		754A689F27BDE7EE00A460CF /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
 		754A68A027BDE7F200A460CF /* ImageHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageHelper.mm; sourceTree = "<group>"; };
+		758CAC8327D0580700C8F360 /* water.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = water.jpeg; sourceTree = "<group>"; };
+		758CAC8727D0581C00C8F360 /* wallhaven-2ew8wx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wallhaven-2ew8wx.png"; sourceTree = "<group>"; };
+		758CAC8927D05A1100C8F360 /* wallhaven-3kvqm9.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wallhaven-3kvqm9.jpeg"; sourceTree = "<group>"; };
+		758CAC8D27D05ED800C8F360 /* vertexDefault.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertexDefault.glsl; sourceTree = "<group>"; };
+		758CAC8F27D060EF00C8F360 /* drawOnePicture.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = drawOnePicture.glsl; sourceTree = "<group>"; };
+		758CAC9127D062E200C8F360 /* waterPicture.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = waterPicture.glsl; sourceTree = "<group>"; };
+		758CAC9527D08F3700C8F360 /* watermark_icon_doupai.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermark_icon_doupai.png; sourceTree = "<group>"; };
+		758CAC9C27D09DD600C8F360 /* TextureModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextureModel.h; sourceTree = "<group>"; };
+		758CAC9D27D09DD600C8F360 /* TextureModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextureModel.m; sourceTree = "<group>"; };
+		758CACA127D0A33800C8F360 /* vertex_1_map.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex_1_map.glsl; sourceTree = "<group>"; };
 		75B0445C26F051BC00B2286D /* OpenGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75B0445F26F051BC00B2286D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		75B0446026F051BC00B2286D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -57,8 +74,6 @@
 		75B0448726F09FB000B2286D /* GLESUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLESUtil.m; sourceTree = "<group>"; };
 		75B0448926F1EFC500B2286D /* 王路飞.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "王路飞.jpeg"; sourceTree = "<group>"; };
 		75B0448B26F1EFF400B2286D /* wall.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall.jpeg; sourceTree = "<group>"; };
-		75EDE27627BCCAAE00D7CD26 /* 4K_老虎.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "4K_老虎.JPG"; sourceTree = "<group>"; };
-		75EDE27827BCCAB800D7CD26 /* 1920x1080_2点1M.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1920x1080_2点1M.jpg"; sourceTree = "<group>"; };
 		75EDE27B27BCCFF700D7CD26 /* UIImage+Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Util.h"; sourceTree = "<group>"; };
 		75EDE27C27BCCFF700D7CD26 /* UIImage+Util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Util.m"; sourceTree = "<group>"; };
 		75EDE27F27BCF4F000D7CD26 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
@@ -94,6 +109,29 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		758CAC9A27D09D2700C8F360 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				754A689D27BDDBB800A460CF /* awesomeface.png */,
+				758CAC8327D0580700C8F360 /* water.jpeg */,
+				758CAC8727D0581C00C8F360 /* wallhaven-2ew8wx.png */,
+				758CAC9527D08F3700C8F360 /* watermark_icon_doupai.png */,
+				75B0448B26F1EFF400B2286D /* wall.jpeg */,
+				758CAC8927D05A1100C8F360 /* wallhaven-3kvqm9.jpeg */,
+				75B0448926F1EFC500B2286D /* 王路飞.jpeg */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		758CAC9B27D09D3A00C8F360 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				758CAC9C27D09DD600C8F360 /* TextureModel.h */,
+				758CAC9D27D09DD600C8F360 /* TextureModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		75B0445326F051BC00B2286D = {
 			isa = PBXGroup;
 			children = (
@@ -115,13 +153,10 @@
 		75B0445E26F051BC00B2286D /* OpenGL */ = {
 			isa = PBXGroup;
 			children = (
-				754A689D27BDDBB800A460CF /* awesomeface.png */,
+				758CAC9B27D09D3A00C8F360 /* Model */,
+				758CAC9A27D09D2700C8F360 /* Resource */,
 				75EDE27E27BCF4E400D7CD26 /* Std_image */,
 				75EDE27A27BCCFE500D7CD26 /* Category */,
-				75EDE27827BCCAB800D7CD26 /* 1920x1080_2点1M.jpg */,
-				75EDE27627BCCAAE00D7CD26 /* 4K_老虎.JPG */,
-				75B0448B26F1EFF400B2286D /* wall.jpeg */,
-				75B0448926F1EFC500B2286D /* 王路飞.jpeg */,
 				75B0448526F09F5100B2286D /* Util */,
 				75B0448026F0733400B2286D /* GLSL */,
 				75B0445F26F051BC00B2286D /* AppDelegate.h */,
@@ -154,6 +189,10 @@
 		75B0448026F0733400B2286D /* GLSL */ = {
 			isa = PBXGroup;
 			children = (
+				758CACA127D0A33800C8F360 /* vertex_1_map.glsl */,
+				758CAC9127D062E200C8F360 /* waterPicture.glsl */,
+				758CAC8F27D060EF00C8F360 /* drawOnePicture.glsl */,
+				758CAC8D27D05ED800C8F360 /* vertexDefault.glsl */,
 				75EDE28E27BD04C700D7CD26 /* vertexShader.glsl */,
 				75EDE28D27BD04C700D7CD26 /* fragmentShader.glsl */,
 			);
@@ -249,16 +288,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				758CAC8427D0580700C8F360 /* water.jpeg in Resources */,
+				758CAC9727D08F3700C8F360 /* watermark_icon_doupai.png in Resources */,
+				758CAC9027D060EF00C8F360 /* drawOnePicture.glsl in Resources */,
+				758CAC9227D062E200C8F360 /* waterPicture.glsl in Resources */,
 				75B0446F26F051BF00B2286D /* LaunchScreen.storyboard in Resources */,
-				75EDE27927BCCAB800D7CD26 /* 1920x1080_2点1M.jpg in Resources */,
 				75B0448C26F1EFF400B2286D /* wall.jpeg in Resources */,
+				758CAC8A27D05A1100C8F360 /* wallhaven-3kvqm9.jpeg in Resources */,
 				75B0448A26F1EFC500B2286D /* 王路飞.jpeg in Resources */,
 				75B0446C26F051BF00B2286D /* Assets.xcassets in Resources */,
-				75EDE27727BCCAAE00D7CD26 /* 4K_老虎.JPG in Resources */,
 				75EDE28F27BD04C700D7CD26 /* fragmentShader.glsl in Resources */,
 				75EDE29027BD04C700D7CD26 /* vertexShader.glsl in Resources */,
 				754A689E27BDDBB800A460CF /* awesomeface.png in Resources */,
+				758CACA227D0A33800C8F360 /* vertex_1_map.glsl in Resources */,
+				758CAC8E27D05ED800C8F360 /* vertexDefault.glsl in Resources */,
 				75B0446A26F051BD00B2286D /* Main.storyboard in Resources */,
+				758CAC8827D0581C00C8F360 /* wallhaven-2ew8wx.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75EDE28427BCF6D100D7CD26 /* STDBuild.cpp in Sources */,
+				758CAC9E27D09DD600C8F360 /* TextureModel.m in Sources */,
 				754A68A127BDE7F200A460CF /* ImageHelper.mm in Sources */,
 				75B0446726F051BD00B2286D /* ViewController.mm in Sources */,
 				75B0447F26F06D2B00B2286D /* CGLView.m in Sources */,

@@ -18,7 +18,10 @@
 #import <glm/gtc/type_ptr.hpp>
 
 #define kWidth [UIScreen mainScreen].bounds.size.width
-#define kHeight [UIScreen mainScreen].bounds.size.height
+#define kHeight [UIScreen mainScreen].bounds.size.heigh
+
+#define ScreenScale(value) [UIScreen mainScreen].scale * value
+
 
 #ifndef weakify
 #if DEBUG
@@ -67,6 +70,15 @@
     
     GLuint VAO;
 }
+
+typedef enum ContentMode
+{
+    ContentModeRaw = 1,   ///< 锚点原点在中心，位置在合成中心， 原始尺寸 .
+    ContentModeScaleToFill = 2,   ///< 锚点原点在中心，位置在合成中心， 平铺充满, 内容会有拉伸 .
+    ContentModeScaleAspectFit = 3,   ///< 锚点原点在中心，位置在合成中心，内容会全部显示, 会有上下或者左右空白 .
+    ContentModeScaleAspectFill = 4    ///< 锚点原点在中心，位置在合成中心，内容缩放充满容器, 内容可能不完全显示 .
+}ContentMode;
+
 @property (nonatomic, strong) IBOutlet CGLView *glView;
 @property (weak, nonatomic) IBOutlet UIView *operatorView;
 @property (nonatomic, assign) CGPoint lastPoint;
@@ -74,7 +86,26 @@
 @property (weak, nonatomic) IBOutlet UISlider *slider2;
 @property (weak, nonatomic) IBOutlet UISlider *slider3;
 @property (weak, nonatomic) IBOutlet UISlider *slider4;
+
+@property (nonatomic, assign) ContentMode showMode;
+
 @end
+
+// 指定顶点数据
+float vertices[] = {
+    // 后面2个是纹理坐标   // texture coords
+    // positions            // texture coords
+    1.0f,  1.0f, 0.0f,    1.0f, 1.0f, // top right
+    1.0f, -1.0f, 0.0f,    1.0f, 0.0f, // bottom right
+    -1.0f, -1.0f, 0.0f,   0.0f, 0.0f, // bottom left
+    -1.0f,  1.0f, 0.0f,   0.0f, 1.0f  // top left
+};
+
+// 索引缓冲
+unsigned int indices[] = { // 注意索引从0开始!
+    0, 1, 3, // first triangle
+    1, 2, 3  // second triangle
+};
 
 @implementation ViewController
 
@@ -87,6 +118,8 @@
     CGFloat scale = [UIScreen mainScreen].scale;
     width = self.glView.frame.size.width * scale;
     height = self.glView.frame.size.height * scale;
+    self.showMode = ContentModeScaleAspectFill;
+    
     [self _setContext];
     [self _buildGLViewAndBindBuffer];
     
@@ -114,29 +147,82 @@
 
 #pragma mark - Action
 
-- (IBAction)sliderChange1:(UISlider *)sender {
-    @weakify(self);
-    [self updateTranscation:^{
-        @strongify(self);
-    }];
-}
+- (IBAction)waterAction:(id)sender {
+    self->shaderProgram = [GLESUtil creatShaderProgramWithVertextShaderName:@"vertex_1_map"
+                                                         fragmentShaderName:@"drawOnePicture"];
+    [self begin];
 
-- (IBAction)slider2Change:(UISlider *)sender {
-    @weakify(self);
-    [self updateTranscation:^{
-        @strongify(self);
+    // 加载图片内容
+    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"wallhaven-3kvqm9.jpeg" ofType:nil];
+    TextureModel *contentTexture = [GLESUtil genTexture:0 format:GL_RGBA filePath:path1];
+    
+    float scaleX = 1.0;
+    float scaleY = 1.0;
+    
+    if (self.showMode == ContentModeScaleAspectFit)
+    {
+        // 用最长的那边来做缩放, 可以保证显示完整
+        if (contentTexture.width >= contentTexture.height) {
+            float newHeight = width * contentTexture.height / contentTexture.width;
+            scaleY = newHeight / height;
+        }
         
-    }];
+    }else if (self.showMode == ContentModeScaleAspectFill)
+    {
+        // 短的那边要填充
+        if (contentTexture.width >= contentTexture.height) {
+            float newW = height * contentTexture.width / contentTexture.height;
+            scaleX = newW / width;
+        }
+    }
+
+    // 居中充满, 不拉伸图片
+    glm::mat4 mvpMatrix;
+    mvpMatrix = glm::scale(mvpMatrix, glm::vec3(scaleX, scaleY, 1.0));
+    
+    // 设置缩放矩阵,保证图片的显示效果
+    glUniformMatrix4fv(glGetUniformLocation(self->shaderProgram, "mvpMatrix"), 1, GL_FALSE, glm::value_ptr(mvpMatrix));
+    
+    // 采样
+    glUniform1i(glGetUniformLocation(self->shaderProgram, "texture1"), 0);
+    [self draw];
+    
+    // 再绘制一次水印
+ 
+    // 水印 138 * 72;
+    NSString *path2 = [[NSBundle mainBundle] pathForResource:@"watermark_icon_doupai.png" ofType:nil];
+    TextureModel *model = [GLESUtil genTexture:1 format:GL_RGBA filePath:path2];
+    
+    float sx = float(model.width) / width;
+    float sy = model.height * 1.0 / height;
+    
+    glUniform1i(glGetUniformLocation(self->shaderProgram, "texture1"), 1);
+    
+    glm::mat4 mvpMatrix2;
+    
+    // 平移到右下角去
+    float tx = float(width - model.width - ScreenScale(20)) / width ;
+    float ty = float(height - model.height - ScreenScale(20)) / height ;
+    mvpMatrix2 = glm::translate(mvpMatrix2, glm::vec3(tx, -ty, 0));
+    mvpMatrix2 = glm::scale(mvpMatrix2, glm::vec3(sx, sy, 1.0));
+    glUniformMatrix4fv(glGetUniformLocation(self->shaderProgram, "mvpMatrix"), 1, GL_FALSE, glm::value_ptr(mvpMatrix2));
+    // 再次绘制
+    [self draw];
 }
 
-- (IBAction)slider3Change:(UISlider *)sender {
-    @weakify(self);
-    [self updateTranscation:^{
-        @strongify(self);
-    }];
+- (IBAction)mosaicAction:(id)sender {
+    
 }
 
-- (IBAction)slider4Change:(UISlider *)sender {
+- (IBAction)GaussianBlurAction:(id)sender {
+    
+}
+
+- (IBAction)mirrorAction:(id)sender {
+    
+}
+
+- (IBAction)splitAction:(id)sender {
     
 }
 
@@ -148,12 +234,20 @@
 
 - (void)begin {
     // 使用renderBuffer为颜色缓冲区
-    self->shaderProgram = [GLESUtil creatShaderProgramWithVertextShaderName:@"vertexShader"
-                                                         fragmentShaderName:@"fragmentShader"];
     glClearColor(1, 1, 1, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glViewport(0, 0, width, height);
     glUseProgram(self->shaderProgram);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+}
+
+- (void)drawWithVAO:(GLuint)vao {
+    // 绑定VAO 数据
+    glBindVertexArray(vao);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    glBindVertexArray(0);
+    [context presentRenderbuffer:frameBuff];
 }
 
 - (void)draw {
@@ -165,23 +259,10 @@
 }
 
 - (void)drawMixImage {
+    self->shaderProgram = [GLESUtil creatShaderProgramWithVertextShaderName:@"vertexShader"
+                                                         fragmentShaderName:@"fragmentShader"];
     [self begin];
     
-    // 指定顶点数据
-    float vertices[] = {
-        // 后面2个是纹理坐标   // texture coords
-        // positions            // texture coords
-        1.0f,  1.0f, 0.0f,    1.0f, 1.0f, // top right
-        1.0f, -1.0f, 0.0f,    1.0f, 0.0f, // bottom right
-        -1.0f, -1.0f, 0.0f,   0.0f, 0.0f, // bottom left
-        -1.0f,  1.0f, 0.0f,   0.0f, 1.0f  // top left
-    };
-    
-    // 索引缓冲
-    unsigned int indices[] = { // 注意索引从0开始!
-        0, 1, 3, // first triangle
-        1, 2, 3  // second triangle
-    };
     GLuint VAO, VBO, EBO;
     glGenVertexArrays(1, &VAO);
     self->VAO = VAO;
@@ -208,16 +289,15 @@
     glEnableVertexAttribArray(1);
     
     NSString *path1 = [[NSBundle mainBundle] pathForResource:@"wall.jpeg" ofType:nil];
-    textureID1 = [GLESUtil genTexture:0 format:GL_RGBA filePath:path1];
+    [GLESUtil genTexture:0 format:GL_RGBA filePath:path1];
 
     
     NSString *path2 = [[NSBundle mainBundle] pathForResource:@"awesomeface.png" ofType:nil];
-    textureID2 = [GLESUtil genTexture:1 format:GL_RGBA filePath:path2];
+    [GLESUtil genTexture:1 format:GL_RGBA filePath:path2];
 
     glUniform1i(glGetUniformLocation(self->shaderProgram, "texture1"), 0); // 手动设置
     glUniform1i(glGetUniformLocation(self->shaderProgram, "texture2"), 1); // 手动设置
 
-    glUniform1f(glGetUniformLocation(self->shaderProgram, "s"), 1);
     glm::mat4 scale;
     glm::mat4 rotation;
     glm::mat4 translation;
