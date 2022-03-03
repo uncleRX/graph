@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TXE-FB-34r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--效果测试-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZ5-28-aFk" customClass="CGLView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="597"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J6H-z8-yu1">
+                                <rect key="frame" x="0.0" y="685" width="414" height="200"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4EC-EH-pc7">
+                                        <rect key="frame" x="16" y="18" width="157" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="sliderChange1:" destination="BYZ-38-t0r" eventType="valueChanged" id="NFS-DO-AS2"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8a6-Dl-adB">
+                                        <rect key="frame" x="16" y="55" width="157" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="slider3Change:" destination="BYZ-38-t0r" eventType="valueChanged" id="qkN-fE-coM"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="yQ8-br-6Uy">
+                                        <rect key="frame" x="201" y="18" width="138" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="slider2Change:" destination="BYZ-38-t0r" eventType="valueChanged" id="spP-UF-Ta5"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="dkQ-CM-LMN">
+                                        <rect key="frame" x="201" y="55" width="132" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="slider4Change:" destination="BYZ-38-t0r" eventType="valueChanged" id="KCm-ln-OD1"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="gah-Gv-FvC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GZ5-28-aFk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3wC-Gf-GmW"/>
+                            <constraint firstItem="J6H-z8-yu1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4sq-hf-E0x"/>
+                            <constraint firstItem="GZ5-28-aFk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="959-je-cLO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GZ5-28-aFk" secondAttribute="trailing" id="B6J-v0-8zB"/>
+                            <constraint firstItem="J6H-z8-yu1" firstAttribute="top" secondItem="GZ5-28-aFk" secondAttribute="bottom" id="M8V-zX-xuV"/>
+                            <constraint firstAttribute="bottom" secondItem="J6H-z8-yu1" secondAttribute="bottom" constant="11" id="Noh-bh-uc5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="J6H-z8-yu1" secondAttribute="trailing" id="dzR-2v-mqf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="效果测试" leftItemsSupplementBackButton="YES" id="I3s-aQ-FaT">
+                        <barButtonItem key="backBarButtonItem" title="确定我群" id="nIS-6u-vVs"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="glView" destination="GZ5-28-aFk" id="iCu-Kz-aln"/>
+                        <outlet property="operatorView" destination="J6H-z8-yu1" id="bRt-Zd-D24"/>
+                        <outlet property="slder1" destination="4EC-EH-pc7" id="fyu-9U-PlY"/>
+                        <outlet property="slider2" destination="yQ8-br-6Uy" id="0mK-Ve-5LD"/>
+                        <outlet property="slider3" destination="8a6-Dl-adB" id="b81-LT-wrc"/>
+                        <outlet property="slider4" destination="dkQ-CM-LMN" id="lIW-9l-bRa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="826.08695652173924" y="88.392857142857139"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="q1w-M6-Rx2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TXE-FB-34r" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wig-WU-sqd">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="cFP-it-sHn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BNl-1W-Qxy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-84.057971014492765" y="88.392857142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

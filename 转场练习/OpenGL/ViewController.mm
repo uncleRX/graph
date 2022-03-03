@@ -20,6 +20,38 @@
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.height
 
+#ifndef weakify
+#if DEBUG
+#if __has_feature(objc_arc)
+#define weakify(object) autoreleasepool{} __weak __typeof__(object) weak##_##object = object;
+#else
+#define weakify(object) autoreleasepool{} __block __typeof__(object) block##_##object = object;
+#endif
+#else
+#if __has_feature(objc_arc)
+#define weakify(object) try{} @finally{} {} __weak __typeof__(object) weak##_##object = object;
+#else
+#define weakify(object) try{} @finally{} {} __block __typeof__(object) block##_##object = object;
+#endif
+#endif
+#endif
+
+#ifndef strongify
+#if DEBUG
+#if __has_feature(objc_arc)
+#define strongify(object) autoreleasepool{} __typeof__(object) object = weak##_##object;
+#else
+#define strongify(object) autoreleasepool{} __typeof__(object) object = block##_##object;
+#endif
+#else
+#if __has_feature(objc_arc)
+#define strongify(object) try{} @finally{} __typeof__(object) object = weak##_##object;
+#else
+#define strongify(object) try{} @finally{} __typeof__(object) object = block##_##object;
+#endif
+#endif
+#endif
+
 @interface ViewController ()
 {
     EAGLContext *context;
@@ -83,49 +115,55 @@
 #pragma mark - Action
 
 - (IBAction)sliderChange1:(UISlider *)sender {
+    @weakify(self);
     [self updateTranscation:^{
+        @strongify(self);
         float value = 1.f + sender.value;
-        glUniform1i(glGetUniformLocation(shaderProgram, "texture1"), 0); // 手动设置
-        glUniform1i(glGetUniformLocation(shaderProgram, "texture2"), 1); // 手动设置
+        glUniform1i(glGetUniformLocation(self->shaderProgram, "texture1"), 0); // 手动设置
+        glUniform1i(glGetUniformLocation(self->shaderProgram, "texture2"), 1); // 手动设置
         glm::mat4 scale;
         glm::mat4 rotation;
         glm::mat4 translation;
         scale = glm::scale(scale, glm::vec3(value, value, value));
-        glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "scale"), 1, GL_FALSE, glm::value_ptr(scale));
-        glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "rotation"), 1, GL_FALSE, glm::value_ptr(rotation));
-        glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "translation"), 1, GL_FALSE, glm::value_ptr(translation));
+        glUniformMatrix4fv(glGetUniformLocation(self->shaderProgram, "scale"), 1, GL_FALSE, glm::value_ptr(scale));
+        glUniformMatrix4fv(glGetUniformLocation(self->shaderProgram, "rotation"), 1, GL_FALSE, glm::value_ptr(rotation));
+        glUniformMatrix4fv(glGetUniformLocation(self->shaderProgram, "translation"), 1, GL_FALSE, glm::value_ptr(translation));
     }];
 }
 
 - (IBAction)slider2Change:(UISlider *)sender {
+    @weakify(self);
     [self updateTranscation:^{
+        @strongify(self);
         float value = 1.f + sender.value;
-        glUniform1i(glGetUniformLocation(shaderProgram, "texture1"), 0); // 手动设置
-        glUniform1i(glGetUniformLocation(shaderProgram, "texture2"), 1); // 手动设置
+        glUniform1i(glGetUniformLocation(self->shaderProgram, "texture1"), 0); // 手动设置
+        glUniform1i(glGetUniformLocation(self->shaderProgram, "texture2"), 1); // 手动设置
         glm::mat4 scale;
         glm::mat4 rotation;
         glm::mat4 translation;
         static float angle = 0;
         angle += 10;
         rotation = glm::rotate(rotation, angle, glm::vec3(0.0f, 0.0f, 1.0f));
-        glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "scale"), 1, GL_FALSE, glm::value_ptr(scale));
-        glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "rotation"), 1, GL_FALSE, glm::value_ptr(rotation));
-        glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "translation"), 1, GL_FALSE, glm::value_ptr(translation));
+        glUniformMatrix4fv(glGetUniformLocation(self->shaderProgram, "scale"), 1, GL_FALSE, glm::value_ptr(scale));
+        glUniformMatrix4fv(glGetUniformLocation(self->shaderProgram, "rotation"), 1, GL_FALSE, glm::value_ptr(rotation));
+        glUniformMatrix4fv(glGetUniformLocation(self->shaderProgram, "translation"), 1, GL_FALSE, glm::value_ptr(translation));
     }];
 }
 
 - (IBAction)slider3Change:(UISlider *)sender {
+    @weakify(self);
     [self updateTranscation:^{
+        @strongify(self);
         float value = 1.f + sender.value;
-        glUniform1i(glGetUniformLocation(shaderProgram, "texture1"), 0); // 手动设置
-        glUniform1i(glGetUniformLocation(shaderProgram, "texture2"), 1); // 手动设置
+        glUniform1i(glGetUniformLocation(self->shaderProgram, "texture1"), 0); // 手动设置
+        glUniform1i(glGetUniformLocation(self->shaderProgram, "texture2"), 1); // 手动设置
         glm::mat4 scale;
         glm::mat4 rotation;
         glm::mat4 translation;
         translation = glm::translate(translation, glm::vec3(value, value, 1.0));
-        glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "scale"), 1, GL_FALSE, glm::value_ptr(scale));
-        glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "rotation"), 1, GL_FALSE, glm::value_ptr(rotation));
-        glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "translation"), 1, GL_FALSE, glm::value_ptr(translation));
+        glUniformMatrix4fv(glGetUniformLocation(self->shaderProgram, "scale"), 1, GL_FALSE, glm::value_ptr(scale));
+        glUniformMatrix4fv(glGetUniformLocation(self->shaderProgram, "rotation"), 1, GL_FALSE, glm::value_ptr(rotation));
+        glUniformMatrix4fv(glGetUniformLocation(self->shaderProgram, "translation"), 1, GL_FALSE, glm::value_ptr(translation));
     }];
 }
 
@@ -146,7 +184,7 @@
     glClearColor(1, 1, 1, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glViewport(0, 0, width, height);
-    glUseProgram(shaderProgram);
+    glUseProgram(self->shaderProgram);
 }
 
 - (void)draw {
@@ -209,17 +247,16 @@
 
     
 
-    glUniform1i(glGetUniformLocation(shaderProgram, "texture1"), 0); // 手动设置
-    glUniform1i(glGetUniformLocation(shaderProgram, "texture2"), 1); // 手动设置
+    glUniform1i(glGetUniformLocation(self->shaderProgram, "texture1"), 0); // 手动设置
+    glUniform1i(glGetUniformLocation(self->shaderProgram, "texture2"), 1); // 手动设置
 
-    glUniform1f(glGetUniformLocation(shaderProgram, "s"), 1);
-    glm::mat4 scale = glm::mat4(1.0f);
-//    glm::mat4 rotation;
-//    glm::mat4 translation;
-    glm::scale(scale, glm::vec3(0.1, 0.1, 0.5));
-    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "scale"), 1, GL_FALSE, glm::value_ptr(scale));
-//    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "rotation"), 1, GL_FALSE, glm::value_ptr(rotation));
-//    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "translation"), 1, GL_FALSE, glm::value_ptr(translation));
+    glUniform1f(glGetUniformLocation(self->shaderProgram, "s"), 1);
+    glm::mat4 scale;
+    glm::mat4 rotation;
+    glm::mat4 translation;
+    glUniformMatrix4fv(glGetUniformLocation(self->shaderProgram, "scale"), 1, GL_FALSE, glm::value_ptr(scale));
+    glUniformMatrix4fv(glGetUniformLocation(self->shaderProgram, "rotation"), 1, GL_FALSE, glm::value_ptr(rotation));
+    glUniformMatrix4fv(glGetUniformLocation(self->shaderProgram, "translation"), 1, GL_FALSE, glm::value_ptr(translation));
 
     [self draw];
 }
