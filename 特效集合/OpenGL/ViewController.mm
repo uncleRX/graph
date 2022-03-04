@@ -211,7 +211,44 @@ unsigned int indices[] = { // 注意索引从0开始!
 }
 
 - (IBAction)mosaicAction:(id)sender {
+    self->shaderProgram = [GLESUtil creatShaderProgramWithVertextShaderName:@"vertex_1_map"
+                                                         fragmentShaderName:@"fragment_mosaic"];
+    [self begin];
+
+    // 加载图片内容
+    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"wallhaven-2ew8wx.png" ofType:nil];
+    TextureModel *contentTexture = [GLESUtil genTexture:0 format:GL_RGBA filePath:path1];
     
+    float scaleX = 1.0;
+    float scaleY = 1.0;
+    if (self.showMode == ContentModeScaleAspectFit)
+    {
+        // 用最长的那边来做缩放, 可以保证显示完整
+        if (contentTexture.width >= contentTexture.height) {
+            float newHeight = width * contentTexture.height / contentTexture.width;
+            scaleY = newHeight / height;
+        }
+        
+    }else if (self.showMode == ContentModeScaleAspectFill)
+    {
+        // 短的那边要填充
+        if (contentTexture.width >= contentTexture.height) {
+            float newW = height * contentTexture.width / contentTexture.height;
+            scaleX = newW / width;
+        }
+    }
+    // 居中充满, 不拉伸图片
+    glm::mat4 mvpMatrix;
+    mvpMatrix = glm::scale(mvpMatrix, glm::vec3(scaleX, scaleY, 1.0));
+    
+    // 设置缩放矩阵,保证图片的显示效果
+    glUniformMatrix4fv(glGetUniformLocation(self->shaderProgram, "mvpMatrix"), 1, GL_FALSE, glm::value_ptr(mvpMatrix));
+    
+    glUniform1i(glGetUniformLocation(self->shaderProgram, "inputTexture"), 0);
+    glUniform2f(glGetUniformLocation(self->shaderProgram, "texSize"), contentTexture.width, contentTexture.height);
+    glUniform2f(glGetUniformLocation(self->shaderProgram, "mosaicSize"), 16, 16);
+    
+    [self draw];
 }
 
 - (IBAction)GaussianBlurAction:(id)sender {
@@ -291,7 +328,6 @@ unsigned int indices[] = { // 注意索引从0开始!
     NSString *path1 = [[NSBundle mainBundle] pathForResource:@"wall.jpeg" ofType:nil];
     [GLESUtil genTexture:0 format:GL_RGBA filePath:path1];
 
-    
     NSString *path2 = [[NSBundle mainBundle] pathForResource:@"awesomeface.png" ofType:nil];
     [GLESUtil genTexture:1 format:GL_RGBA filePath:path2];
 
