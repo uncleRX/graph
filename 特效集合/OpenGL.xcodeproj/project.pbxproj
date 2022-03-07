@@ -20,6 +20,7 @@
 		758CAC9E27D09DD600C8F360 /* TextureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 758CAC9D27D09DD600C8F360 /* TextureModel.m */; };
 		758CACA227D0A33800C8F360 /* vertex_1_map.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 758CACA127D0A33800C8F360 /* vertex_1_map.glsl */; };
 		758CACA627D1A10500C8F360 /* fragment_mosaic.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 758CACA527D1A10500C8F360 /* fragment_mosaic.glsl */; };
+		758CACF127D59E4200C8F360 /* fragment_gaussblur.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 758CACF027D59E4200C8F360 /* fragment_gaussblur.glsl */; };
 		75B0446126F051BC00B2286D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B0446026F051BC00B2286D /* AppDelegate.m */; };
 		75B0446426F051BC00B2286D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B0446326F051BC00B2286D /* SceneDelegate.m */; };
 		75B0446726F051BD00B2286D /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75B0446626F051BD00B2286D /* ViewController.mm */; };
@@ -56,6 +57,7 @@
 		758CAC9D27D09DD600C8F360 /* TextureModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextureModel.m; sourceTree = "<group>"; };
 		758CACA127D0A33800C8F360 /* vertex_1_map.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex_1_map.glsl; sourceTree = "<group>"; };
 		758CACA527D1A10500C8F360 /* fragment_mosaic.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragment_mosaic.glsl; sourceTree = "<group>"; };
+		758CACF027D59E4200C8F360 /* fragment_gaussblur.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragment_gaussblur.glsl; sourceTree = "<group>"; };
 		75B0445C26F051BC00B2286D /* OpenGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75B0445F26F051BC00B2286D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		75B0446026F051BC00B2286D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 		75B0448026F0733400B2286D /* GLSL */ = {
 			isa = PBXGroup;
 			children = (
+				758CACF027D59E4200C8F360 /* fragment_gaussblur.glsl */,
 				758CACA527D1A10500C8F360 /* fragment_mosaic.glsl */,
 				758CACA127D0A33800C8F360 /* vertex_1_map.glsl */,
 				758CAC9127D062E200C8F360 /* waterPicture.glsl */,
@@ -299,6 +302,7 @@
 				75B0448C26F1EFF400B2286D /* wall.jpeg in Resources */,
 				758CAC8A27D05A1100C8F360 /* wallhaven-3kvqm9.jpeg in Resources */,
 				75B0448A26F1EFC500B2286D /* 王路飞.jpeg in Resources */,
+				758CACF127D59E4200C8F360 /* fragment_gaussblur.glsl in Resources */,
 				758CACA627D1A10500C8F360 /* fragment_mosaic.glsl in Resources */,
 				75B0446C26F051BF00B2286D /* Assets.xcassets in Resources */,
 				75EDE28F27BD04C700D7CD26 /* fragmentShader.glsl in Resources */,

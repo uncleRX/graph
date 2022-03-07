@@ -21,4 +21,5 @@ void main()
     vec2 UVMosaic = XYMosaic / texSize;
     
     FragColor = texture(inputTexture, UVMosaic);
+    
 }
