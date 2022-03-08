@@ -16,6 +16,7 @@
 #import <glm/glm.hpp>
 #import <glm/gtc/matrix_transform.hpp>
 #import <glm/gtc/type_ptr.hpp>
+#import "Camera.hpp"
 
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.heigh
@@ -115,6 +116,12 @@ float vertices[] = {
     -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
 };
 
+// 定义摄像机坐标
+Camera camera(glm::vec3(0.0f, 0.0f, 60.f));
+
+// 光源位置
+glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+
 @implementation ViewController
 
 - (void)viewDidLoad {
@@ -136,8 +143,6 @@ float vertices[] = {
                                                          fragmentShaderName:@"cube_color"];
     ShaderProgram *lightShader = [GLESUtil creatShaderProgramWithVertextShaderName:@"vertex_1"
                                                          fragmentShaderName:@"fragment_light"];
-    [shaderProgram use];
-    
     [self begin];
     GLuint VAO,VBO;
     glGenVertexArrays(1, &VAO);
@@ -151,49 +156,43 @@ float vertices[] = {
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
     
-    glm::mat4 model = glm::mat4(1.0f);
-    glm::mat4 view = glm::mat4(1.0f);
-    glm::mat4 projection = glm::mat4(1.0f);
-    model = glm::rotate(model, 30.0f, glm::vec3(1.0, 1.0, 0));
-    
-    float aspect = float(width * 1.0 / height);
-    view = glm::translate(view, glm::vec3(-0.3f, 0.0f, -50));
-    projection = glm::perspective(glm::radians(360.f),aspect, 0.1f, 100.f);
-    
-    [shaderProgram glm_bindMatrix4x4:@"model" value:model];
-    [shaderProgram glm_bindMatrix4x4:@"view" value:view];
-    [shaderProgram glm_bindMatrix4x4:@"projection" value:projection];
-    
-    // 设置光源
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+    [shaderProgram use];
     [shaderProgram bindVec3:@"objectColor" value: Vec3{1.0, 0.5f, 0.31f}];
     [shaderProgram bindVec3:@"lightColor" value:Vec3{1.0f, 1.0f, 1.0f}];
+    [shaderProgram glm_bindVec3:@"lightPos" value:lightPos];
+    
+    float aspect = float(width * 1.0 / height);
+    glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), aspect, 0.1f, 100.0f);
+    glm::mat4 view = camera.GetViewMatrix();
+    [shaderProgram glm_bindMatrix4x4:@"projection" value:projection];
+    [shaderProgram glm_bindMatrix4x4:@"view" value:view];
+    glm::mat4 model = glm::mat4(1.0f);
+    [shaderProgram glm_bindMatrix4x4:@"model" value:model];
     glDrawArrays(GL_TRIANGLES, 0, 36);
     
     // 设置灯源立方体
-    unsigned int lightVAO;
-    glGenVertexArrays(1, &lightVAO);
-    glBindVertexArray(lightVAO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-
-    [lightShader use];
     {
-        glm::vec3 lightPos(1.2f, 3.f, -40.0f);
+        unsigned int lightVAO;
+        glGenVertexArrays(1, &lightVAO);
+        glBindVertexArray(lightVAO);
+        glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+        glEnableVertexAttribArray(0);
+
+        [lightShader use];
+        [lightShader glm_bindMatrix4x4:@"projection" value:projection];
+        [lightShader glm_bindMatrix4x4:@"view" value:view];
+        
         glm::mat4 model = glm::mat4(1.0f);
         model = glm::translate(model, lightPos);
-        [lightShader glm_bindVec3:@"lightPos" value:lightPos];
-    
-        glm::mat4 view = glm::mat4(1.0f);
-        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -50));
-        glm::mat4 projection = glm::mat4(1.0f);
-        projection = glm::perspective(glm::radians(360.f), aspect, 0.1f, 100.f);
-
         [lightShader glm_bindMatrix4x4:@"model" value:model];
-        [lightShader glm_bindMatrix4x4:@"view" value:view];
-        [lightShader glm_bindMatrix4x4:@"projection" value:projection];
+        [lightShader glm_bindVec3:@"lightPos" value:lightPos];
+        
+        glDrawArrays(GL_TRIANGLES, 0, 36);
     }
-    glDrawArrays(GL_TRIANGLES, 0, 36);
     [context presentRenderbuffer:self->colorBuff];
 }
 

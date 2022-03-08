@@ -43,6 +43,7 @@
 		75491AE527D6E6F7001AA59F /* fragment_light.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragment_light.glsl; sourceTree = "<group>"; };
 		75491AE727D6E8E7001AA59F /* ShaderProgram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderProgram.h; sourceTree = "<group>"; };
 		75491AE827D6E8E7001AA59F /* ShaderProgram.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ShaderProgram.mm; sourceTree = "<group>"; };
+		75491AF027D76224001AA59F /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		754A689D27BDDBB800A460CF /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
 		754A689F27BDE7EE00A460CF /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
 		754A68A027BDE7F200A460CF /* ImageHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageHelper.mm; sourceTree = "<group>"; };
@@ -106,6 +107,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		75491AEE27D76212001AA59F /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				75491AF027D76224001AA59F /* Camera.hpp */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 		758CAC9A27D09D2700C8F360 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +161,7 @@
 		75B0445E26F051BC00B2286D /* OpenGL */ = {
 			isa = PBXGroup;
 			children = (
+				75491AEE27D76212001AA59F /* Camera */,
 				758CAC9B27D09D3A00C8F360 /* Model */,
 				758CAC9A27D09D2700C8F360 /* Resource */,
 				75EDE27E27BCF4E400D7CD26 /* Std_image */,
