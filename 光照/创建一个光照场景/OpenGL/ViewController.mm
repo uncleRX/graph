@@ -72,47 +72,47 @@
 @end
 
 float vertices[] = {
-    -0.5f, -0.5f, -0.5f,
-    0.5f, -0.5f, -0.5f,
-    0.5f,  0.5f, -0.5f,
-    0.5f,  0.5f, -0.5f,
-    -0.5f,  0.5f, -0.5f,
-    -0.5f, -0.5f, -0.5f,
-    
-    -0.5f, -0.5f,  0.5f,
-    0.5f, -0.5f,  0.5f,
-    0.5f,  0.5f,  0.5f,
-    0.5f,  0.5f,  0.5f,
-    -0.5f,  0.5f,  0.5f,
-    -0.5f, -0.5f,  0.5f,
-    
-    -0.5f,  0.5f,  0.5f,
-    -0.5f,  0.5f, -0.5f,
-    -0.5f, -0.5f, -0.5f,
-    -0.5f, -0.5f, -0.5f,
-    -0.5f, -0.5f,  0.5f,
-    -0.5f,  0.5f,  0.5f,
-    
-    0.5f,  0.5f,  0.5f,
-    0.5f,  0.5f, -0.5f,
-    0.5f, -0.5f, -0.5f,
-    0.5f, -0.5f, -0.5f,
-    0.5f, -0.5f,  0.5f,
-    0.5f,  0.5f,  0.5f,
-    
-    -0.5f, -0.5f, -0.5f,
-    0.5f, -0.5f, -0.5f,
-    0.5f, -0.5f,  0.5f,
-    0.5f, -0.5f,  0.5f,
-    -0.5f, -0.5f,  0.5f,
-    -0.5f, -0.5f, -0.5f,
-    
-    -0.5f,  0.5f, -0.5f,
-    0.5f,  0.5f, -0.5f,
-    0.5f,  0.5f,  0.5f,
-    0.5f,  0.5f,  0.5f,
-    -0.5f,  0.5f,  0.5f,
-    -0.5f,  0.5f, -0.5f, 
+    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+     0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+     0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+     0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+
+    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+     0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+     0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+     0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+
+    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+
+     0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+     0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+     0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+     0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+     0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+
+    -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+     0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+     0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+     0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+
+    -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+     0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+     0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+     0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
 };
 
 @implementation ViewController
@@ -134,7 +134,6 @@ float vertices[] = {
 - (void)drawCube {
     ShaderProgram *shaderProgram = [GLESUtil creatShaderProgramWithVertextShaderName:@"vertex_1"
                                                          fragmentShaderName:@"cube_color"];
-    
     ShaderProgram *lightShader = [GLESUtil creatShaderProgramWithVertextShaderName:@"vertex_1"
                                                          fragmentShaderName:@"fragment_light"];
     [shaderProgram use];
@@ -149,36 +148,27 @@ float vertices[] = {
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
     
     glm::mat4 model = glm::mat4(1.0f);
     glm::mat4 view = glm::mat4(1.0f);
     glm::mat4 projection = glm::mat4(1.0f);
-    
     model = glm::rotate(model, 30.0f, glm::vec3(1.0, 1.0, 0));
-    
     
     float aspect = float(width * 1.0 / height);
     view = glm::translate(view, glm::vec3(-0.3f, 0.0f, -50));
     projection = glm::perspective(glm::radians(360.f),aspect, 0.1f, 100.f);
     
-    unsigned int modelLoc = [shaderProgram findLocation:@"model"];
-    unsigned int viewLoc = [shaderProgram findLocation:@"view"];
-    unsigned int projectionLoc = [shaderProgram findLocation:@"projection"];
-    
-    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-    glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
-    glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
+    [shaderProgram glm_bindMatrix4x4:@"model" value:model];
+    [shaderProgram glm_bindMatrix4x4:@"view" value:view];
+    [shaderProgram glm_bindMatrix4x4:@"projection" value:projection];
     
     // 设置光源
     [shaderProgram bindVec3:@"objectColor" value: Vec3{1.0, 0.5f, 0.31f}];
     [shaderProgram bindVec3:@"lightColor" value:Vec3{1.0f, 1.0f, 1.0f}];
-    
     glDrawArrays(GL_TRIANGLES, 0, 36);
     
-
-
     // 设置灯源立方体
     unsigned int lightVAO;
     glGenVertexArrays(1, &lightVAO);
@@ -192,19 +182,16 @@ float vertices[] = {
         glm::vec3 lightPos(1.2f, 3.f, -40.0f);
         glm::mat4 model = glm::mat4(1.0f);
         model = glm::translate(model, lightPos);
+        [lightShader glm_bindVec3:@"lightPos" value:lightPos];
     
         glm::mat4 view = glm::mat4(1.0f);
         view = glm::translate(view, glm::vec3(0.0f, 0.0f, -50));
         glm::mat4 projection = glm::mat4(1.0f);
         projection = glm::perspective(glm::radians(360.f), aspect, 0.1f, 100.f);
 
-        GLuint modelLoc = [shaderProgram findLocation:@"model"];
-        GLuint viewLoc = [shaderProgram findLocation:@"view"];
-        GLuint projectionLoc = [shaderProgram findLocation:@"projection"];
-        
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
-        glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
+        [lightShader glm_bindMatrix4x4:@"model" value:model];
+        [lightShader glm_bindMatrix4x4:@"view" value:view];
+        [lightShader glm_bindMatrix4x4:@"projection" value:projection];
     }
     glDrawArrays(GL_TRIANGLES, 0, 36);
     [context presentRenderbuffer:self->colorBuff];
