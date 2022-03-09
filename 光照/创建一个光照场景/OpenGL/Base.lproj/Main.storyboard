@@ -30,7 +30,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="测试"/>
                                         <connections>
-                                            <action selector="waterAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="of0-iJ-9Kj"/>
+                                            <action selector="testAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AQm-an-FFG"/>
                                         </connections>
                                     </button>
                                 </subviews>

@@ -11,6 +11,8 @@
 		75491AE427D604BD001AA59F /* vertex_1.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 75491AE327D604BD001AA59F /* vertex_1.glsl */; };
 		75491AE627D6E6F7001AA59F /* fragment_light.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 75491AE527D6E6F7001AA59F /* fragment_light.glsl */; };
 		75491AE927D6E8E7001AA59F /* ShaderProgram.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75491AE827D6E8E7001AA59F /* ShaderProgram.mm */; };
+		75491AF627D838EF001AA59F /* ZQThreadRunner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75491AF427D838EF001AA59F /* ZQThreadRunner.mm */; };
+		75491AF927D83903001AA59F /* ZQWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 75491AF727D83902001AA59F /* ZQWeakProxy.m */; };
 		754A689E27BDDBB800A460CF /* awesomeface.png in Resources */ = {isa = PBXBuildFile; fileRef = 754A689D27BDDBB800A460CF /* awesomeface.png */; };
 		754A68A127BDE7F200A460CF /* ImageHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 754A68A027BDE7F200A460CF /* ImageHelper.mm */; };
 		758CAC8827D0581C00C8F360 /* wallhaven-2ew8wx.png in Resources */ = {isa = PBXBuildFile; fileRef = 758CAC8727D0581C00C8F360 /* wallhaven-2ew8wx.png */; };
@@ -44,6 +46,10 @@
 		75491AE727D6E8E7001AA59F /* ShaderProgram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderProgram.h; sourceTree = "<group>"; };
 		75491AE827D6E8E7001AA59F /* ShaderProgram.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ShaderProgram.mm; sourceTree = "<group>"; };
 		75491AF027D76224001AA59F /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
+		75491AF427D838EF001AA59F /* ZQThreadRunner.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZQThreadRunner.mm; sourceTree = "<group>"; };
+		75491AF527D838EF001AA59F /* ZQThreadRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQThreadRunner.h; sourceTree = "<group>"; };
+		75491AF727D83902001AA59F /* ZQWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQWeakProxy.m; sourceTree = "<group>"; };
+		75491AF827D83903001AA59F /* ZQWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQWeakProxy.h; sourceTree = "<group>"; };
 		754A689D27BDDBB800A460CF /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
 		754A689F27BDE7EE00A460CF /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
 		754A68A027BDE7F200A460CF /* ImageHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageHelper.mm; sourceTree = "<group>"; };
@@ -208,6 +214,10 @@
 		75B0448526F09F5100B2286D /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				75491AF827D83903001AA59F /* ZQWeakProxy.h */,
+				75491AF727D83902001AA59F /* ZQWeakProxy.m */,
+				75491AF527D838EF001AA59F /* ZQThreadRunner.h */,
+				75491AF427D838EF001AA59F /* ZQThreadRunner.mm */,
 				75B0448626F09FB000B2286D /* GLESUtil.h */,
 				75B0448726F09FB000B2286D /* GLESUtil.mm */,
 			);
@@ -351,7 +361,9 @@
 				75B0447226F051BF00B2286D /* main.m in Sources */,
 				75B0448826F09FB000B2286D /* GLESUtil.mm in Sources */,
 				75EDE27D27BCCFF700D7CD26 /* UIImage+Util.m in Sources */,
+				75491AF927D83903001AA59F /* ZQWeakProxy.m in Sources */,
 				75B0446426F051BC00B2286D /* SceneDelegate.m in Sources */,
+				75491AF627D838EF001AA59F /* ZQThreadRunner.mm in Sources */,
 				75491AE927D6E8E7001AA59F /* ShaderProgram.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

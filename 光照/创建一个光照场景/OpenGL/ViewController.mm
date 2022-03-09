@@ -17,6 +17,7 @@
 #import <glm/gtc/matrix_transform.hpp>
 #import <glm/gtc/type_ptr.hpp>
 #import "Camera.hpp"
+#import "ZQThreadRunner.h"
 
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.heigh
@@ -69,6 +70,10 @@
 
 @property (nonatomic, strong) IBOutlet CGLView *glView;
 @property (weak, nonatomic) IBOutlet UIView *operatorView;
+@property (nonatomic, strong) ZQThreadRunner *runner;
+
+@property (nonatomic, strong) ShaderProgram *shaderProgram;
+@property (nonatomic, strong) ShaderProgram *lightShader;
 
 @end
 
@@ -123,6 +128,9 @@ Camera camera(glm::vec3(0.0f, 0.0f, 60.f));
 glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
 @implementation ViewController
+{
+    GLuint VBO; // 作全局使用
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -132,22 +140,42 @@ glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
     height = self.glView.frame.size.height * scale;
     [self _setContext];
     [self _buildGLViewAndBindBuffer];
-    // draw
-    [self drawCube];
+    [self prepareData];
+    [self _buildRunnerAndStart];
+}
+
+- (void)_buildRunnerAndStart
+{
+    ZQThreadRunner *runner = [ZQThreadRunner buildRunner];
+    self.runner = runner;
+    @weakify(self);
+    [self.runner setTimerAction:^{
+        @strongify(self);
+        [self renderCudeAndLight];
+    }];
+    [runner start];
 }
 
 #pragma mark - Action
 
-- (void)drawCube {
+- (IBAction)testAction:(id)sender {
+
+}
+
+- (void)prepareData {
     ShaderProgram *shaderProgram = [GLESUtil creatShaderProgramWithVertextShaderName:@"vertex_1"
                                                          fragmentShaderName:@"cube_color"];
     ShaderProgram *lightShader = [GLESUtil creatShaderProgramWithVertextShaderName:@"vertex_1"
                                                          fragmentShaderName:@"fragment_light"];
+    self.shaderProgram = shaderProgram;
+    self.lightShader = lightShader;
+    
     [self begin];
     GLuint VAO,VBO;
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glBindVertexArray(VAO);
+    self->VBO = VBO;
 
     // 复制顶点数据 到顶点缓冲区中
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -158,6 +186,12 @@ glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
     
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
+}
+
+- (void)renderCudeAndLight
+{
+    ShaderProgram *shaderProgram = self.shaderProgram;
+    ShaderProgram *lightShader = self.lightShader;
 
     [shaderProgram use];
     [shaderProgram bindVec3:@"objectColor" value: Vec3{1.0, 0.5f, 0.31f}];
@@ -172,7 +206,6 @@ glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
     glm::mat4 model = glm::mat4(1.0f);
     [shaderProgram glm_bindMatrix4x4:@"model" value:model];
     glDrawArrays(GL_TRIANGLES, 0, 36);
-    
     // 设置灯源立方体
     {
         unsigned int lightVAO;
