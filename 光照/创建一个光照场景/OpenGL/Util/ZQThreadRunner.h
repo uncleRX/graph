@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(instancetype) init __attribute__((unavailable("使用 +builderRunner 代替")));
 +(instancetype) new __attribute__((unavailable("使用 +builderRunner 代替")));
 
+@property (strong, nonatomic, readonly) NSThread *thread;
 @property (strong, nonatomic, readonly) CADisplayLink *timer;
 @property (copy, nonatomic) ZQThreadRunnerBlock timerAction;
 /// 自然速度绘制的帧率, 默认60
@@ -25,10 +26,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 构建
 + (instancetype)buildRunner;
++ (instancetype)buildRunnerWithThread:( NSThread * _Nullable )thread;
 
 // 启动定时回调
 - (void)start;
 - (void)stop;
+
+/// 添加一个执行动作
+- (BOOL)addRunner:(ZQThreadRunnerBlock)renner;
+/// 取消线程
+- (void)cancel;
 
 @end
 

@@ -13,6 +13,7 @@
 		75491AE927D6E8E7001AA59F /* ShaderProgram.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75491AE827D6E8E7001AA59F /* ShaderProgram.mm */; };
 		75491AF627D838EF001AA59F /* ZQThreadRunner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75491AF427D838EF001AA59F /* ZQThreadRunner.mm */; };
 		75491AF927D83903001AA59F /* ZQWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 75491AF727D83902001AA59F /* ZQWeakProxy.m */; };
+		75491AFB27D846C5001AA59F /* vertext_light_cube.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 75491AFA27D846C5001AA59F /* vertext_light_cube.glsl */; };
 		754A689E27BDDBB800A460CF /* awesomeface.png in Resources */ = {isa = PBXBuildFile; fileRef = 754A689D27BDDBB800A460CF /* awesomeface.png */; };
 		754A68A127BDE7F200A460CF /* ImageHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 754A68A027BDE7F200A460CF /* ImageHelper.mm */; };
 		758CAC8827D0581C00C8F360 /* wallhaven-2ew8wx.png in Resources */ = {isa = PBXBuildFile; fileRef = 758CAC8727D0581C00C8F360 /* wallhaven-2ew8wx.png */; };
@@ -50,6 +51,7 @@
 		75491AF527D838EF001AA59F /* ZQThreadRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQThreadRunner.h; sourceTree = "<group>"; };
 		75491AF727D83902001AA59F /* ZQWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQWeakProxy.m; sourceTree = "<group>"; };
 		75491AF827D83903001AA59F /* ZQWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQWeakProxy.h; sourceTree = "<group>"; };
+		75491AFA27D846C5001AA59F /* vertext_light_cube.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertext_light_cube.glsl; sourceTree = "<group>"; };
 		754A689D27BDDBB800A460CF /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
 		754A689F27BDE7EE00A460CF /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
 		754A68A027BDE7F200A460CF /* ImageHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageHelper.mm; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		75B0448026F0733400B2286D /* GLSL */ = {
 			isa = PBXGroup;
 			children = (
+				75491AFA27D846C5001AA59F /* vertext_light_cube.glsl */,
 				75491AE527D6E6F7001AA59F /* fragment_light.glsl */,
 				75491AE327D604BD001AA59F /* vertex_1.glsl */,
 				758CAC8F27D060EF00C8F360 /* cube_color.glsl */,
@@ -312,6 +315,7 @@
 				75B0448A26F1EFC500B2286D /* 王路飞.jpeg in Resources */,
 				758CAD0227D5EAD100C8F360 /* 9-16.jpeg in Resources */,
 				75B0446C26F051BF00B2286D /* Assets.xcassets in Resources */,
+				75491AFB27D846C5001AA59F /* vertext_light_cube.glsl in Resources */,
 				754A689E27BDDBB800A460CF /* awesomeface.png in Resources */,
 				75491AE427D604BD001AA59F /* vertex_1.glsl in Resources */,
 				75491AE627D6E6F7001AA59F /* fragment_light.glsl in Resources */,

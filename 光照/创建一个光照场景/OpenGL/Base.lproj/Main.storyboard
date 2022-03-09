@@ -25,14 +25,96 @@
                                 <rect key="frame" x="0.0" y="685" width="414" height="200"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYx-0B-nhz">
-                                        <rect key="frame" x="8" y="21" width="97" height="40"/>
+                                        <rect key="frame" x="0.0" y="21" width="97" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="测试"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="转动X"/>
                                         <connections>
-                                            <action selector="testAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AQm-an-FFG"/>
+                                            <action selector="rotateX:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dYW-gn-jzJ"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sQP-EH-GMp">
+                                        <rect key="frame" x="0.0" y="59" width="97" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="转动Y"/>
+                                        <connections>
+                                            <action selector="rotateY:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w0N-Fe-pVU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D96-kw-GN8">
+                                        <rect key="frame" x="0.0" y="101" width="97" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="转动Z"/>
+                                        <connections>
+                                            <action selector="rotateZ:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3FA-MH-xub"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cj-n7-zkn">
+                                        <rect key="frame" x="206" y="30" width="39" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="前"/>
+                                        <connections>
+                                            <action selector="forward:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k3c-xE-Ili"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vxt-aD-xZz">
+                                        <rect key="frame" x="206" y="91" width="39" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="后"/>
+                                        <connections>
+                                            <action selector="back:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XKn-Zs-Z49"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WhL-ww-WUN">
+                                        <rect key="frame" x="159" y="64" width="39" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="左"/>
+                                        <connections>
+                                            <action selector="left:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A5k-Oa-tjh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8M-Lg-izS">
+                                        <rect key="frame" x="253" y="64" width="39" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="右"/>
+                                        <connections>
+                                            <action selector="right:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wA6-6v-rry"/>
+                                        </connections>
+                                    </button>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Lh3-ap-Gif">
+                                        <rect key="frame" x="87" y="26" width="49" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="x:" destination="BYZ-38-t0r" eventType="valueChanged" id="t4h-2D-cZ7"/>
+                                        </connections>
+                                    </switch>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2Ye-EO-c2W">
+                                        <rect key="frame" x="87" y="69" width="49" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="y:" destination="BYZ-38-t0r" eventType="valueChanged" id="eNQ-2P-2Or"/>
+                                        </connections>
+                                    </switch>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aAG-e9-g8e">
+                                        <rect key="frame" x="87" y="108" width="49" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="z:" destination="BYZ-38-t0r" eventType="valueChanged" id="X3P-Nd-Z4c"/>
+                                        </connections>
+                                    </switch>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="gah-Gv-FvC"/>
