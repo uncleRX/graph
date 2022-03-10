@@ -24,34 +24,46 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J6H-z8-yu1">
                                 <rect key="frame" x="0.0" y="685" width="414" height="200"/>
                                 <subviews>
-                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4EC-EH-pc7">
-                                        <rect key="frame" x="16" y="18" width="157" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cj-n7-zkn">
+                                        <rect key="frame" x="119" y="30" width="82" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="淡入淡出"/>
                                         <connections>
-                                            <action selector="sliderChange1:" destination="BYZ-38-t0r" eventType="valueChanged" id="NFS-DO-AS2"/>
+                                            <action selector="fadeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iyh-Uj-fCg"/>
                                         </connections>
-                                    </slider>
-                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8a6-Dl-adB">
-                                        <rect key="frame" x="16" y="55" width="157" height="30"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WhL-ww-WUN">
+                                        <rect key="frame" x="13" y="30" width="82" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="上下滚动"/>
                                         <connections>
-                                            <action selector="slider3Change:" destination="BYZ-38-t0r" eventType="valueChanged" id="qkN-fE-coM"/>
+                                            <action selector="scroll:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r0b-yK-Arl"/>
                                         </connections>
-                                    </slider>
-                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="yQ8-br-6Uy">
-                                        <rect key="frame" x="201" y="18" width="138" height="30"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8M-Lg-izS">
+                                        <rect key="frame" x="27" y="91" width="53" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="擦除"/>
                                         <connections>
-                                            <action selector="slider2Change:" destination="BYZ-38-t0r" eventType="valueChanged" id="spP-UF-Ta5"/>
+                                            <action selector="wipe:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2IF-bn-Ef4"/>
                                         </connections>
-                                    </slider>
-                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="dkQ-CM-LMN">
-                                        <rect key="frame" x="201" y="55" width="132" height="30"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vxt-aD-xZz">
+                                        <rect key="frame" x="110" y="91" width="53" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="旋转"/>
                                         <connections>
-                                            <action selector="slider4Change:" destination="BYZ-38-t0r" eventType="valueChanged" id="KCm-ln-OD1"/>
+                                            <action selector="rotate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nKP-c9-wmr"/>
                                         </connections>
-                                    </slider>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="gah-Gv-FvC"/>
@@ -76,10 +88,6 @@
                     <connections>
                         <outlet property="glView" destination="GZ5-28-aFk" id="iCu-Kz-aln"/>
                         <outlet property="operatorView" destination="J6H-z8-yu1" id="bRt-Zd-D24"/>
-                        <outlet property="slder1" destination="4EC-EH-pc7" id="fyu-9U-PlY"/>
-                        <outlet property="slider2" destination="yQ8-br-6Uy" id="0mK-Ve-5LD"/>
-                        <outlet property="slider3" destination="8a6-Dl-adB" id="b81-LT-wrc"/>
-                        <outlet property="slider4" destination="dkQ-CM-LMN" id="lIW-9l-bRa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
