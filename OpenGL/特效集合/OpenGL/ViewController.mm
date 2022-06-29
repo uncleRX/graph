@@ -207,7 +207,13 @@ unsigned int indices[] = { // 注意索引从0开始!
     mvpMatrix2 = glm::scale(mvpMatrix2, glm::vec3(sx, sy, 1.0));
     glUniformMatrix4fv(glGetUniformLocation(self->shaderProgram, "mvpMatrix"), 1, GL_FALSE, glm::value_ptr(mvpMatrix2));
     // 再次绘制
+    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+
+
     [self draw];
+    CFAbsoluteTime linkTime = (CFAbsoluteTimeGetCurrent() - startTime);
+    
+    NSLog(@"======time: %f ms", linkTime *1000.0);
 }
 
 - (IBAction)mosaicAction:(id)sender {
@@ -248,7 +254,11 @@ unsigned int indices[] = { // 注意索引从0开始!
     glUniform2f(glGetUniformLocation(self->shaderProgram, "texSize"), contentTexture.width, contentTexture.height);
     glUniform2f(glGetUniformLocation(self->shaderProgram, "mosaicSize"), 16, 16);
     
+    
+
+
     [self draw];
+
 }
 
 - (IBAction)GaussianBlurAction:(id)sender {

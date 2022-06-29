@@ -31,7 +31,7 @@
 #else
 #define weakify(object) autoreleasepool{} __block __typeof__(object) block##_##object = object;
 #endif
-#else
+#elseww
 #if __has_feature(objc_arc)
 #define weakify(object) try{} @finally{} {} __weak __typeof__(object) weak##_##object = object;
 #else
