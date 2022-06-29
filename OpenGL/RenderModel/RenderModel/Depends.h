@@ -41,12 +41,14 @@
 #include <variant>
 
 #include "glfw3.h"
-#include "config.h"
 
+#include "stb_image.h"
 #include "glm.hpp"
 #include "glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
+
+
 
 
 using String = std::string;

@@ -7,8 +7,12 @@
 
 #include <iostream>
 
-
 #include "Depends.h"
+
+#include "shader_m.h"
+#include "camera.h"
+#include "model.h"
+
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
@@ -45,7 +49,6 @@ int main() {
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
-    
     
     //循环渲染
     while(!glfwWindowShouldClose(window)) {
