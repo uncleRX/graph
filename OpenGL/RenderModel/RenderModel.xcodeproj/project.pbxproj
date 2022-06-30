@@ -589,6 +589,8 @@
 		756B8486286C550500C48305 /* scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scene.h; sourceTree = "<group>"; };
 		756B8487286C550500C48305 /* LogStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LogStream.hpp; sourceTree = "<group>"; };
 		756B8488286C562C00C48305 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		756B848E286C5EE000C48305 /* model_loading.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = model_loading.vs; sourceTree = "<group>"; };
+		756B848F286C5EE000C48305 /* model_loading.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = model_loading.fs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1255,6 +1257,8 @@
 		756B8427286C53A500C48305 /* shader */ = {
 			isa = PBXGroup;
 			children = (
+				756B848F286C5EE000C48305 /* model_loading.fs */,
+				756B848E286C5EE000C48305 /* model_loading.vs */,
 			);
 			path = shader;
 			sourceTree = "<group>";
