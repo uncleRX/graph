@@ -130,8 +130,8 @@
 }
 
 - (void)_EAOdrawATriangle {
-    self->shaderProgram = [GLESUtil creatShaderProgramWithVertextShaderName:@"vertexShader1"
-                                                         fragmentShaderName:@"fragmentShader1"];
+    self->shaderProgram = [GLESUtil creatShaderProgramWithVertextShaderName:@"vertexShader2"
+                                                         fragmentShaderName:@"fragmentShader2"];
     glClearColor(1, 1, 1, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     CGFloat scale = [UIScreen mainScreen].scale;
