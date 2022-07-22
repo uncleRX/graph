@@ -12,8 +12,12 @@
 #include <iostream>
 #include <string>
 #include "GLUT/glut.h"
-
 #include "TextureModel.hpp"
+
+#include <time.h>
+#include "AbcModule/ABCScene.hpp"
+
+using namespace AbcModule;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -25,7 +29,7 @@ const unsigned int SCR_WIDTH = 1280;
 const unsigned int SCR_HEIGHT = 720;
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, -10.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 80.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -33,6 +37,10 @@ bool firstMouse = true;
 // timing
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
+
+float currentTime = 0;
+
+AbcScene *g_scene;
 
 void getConeVertext(int segmentation, float radius, float* outVertexData, int* outIndexData);
 
@@ -45,7 +53,6 @@ int main() {
 #ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
-    
     // 创建窗口
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "RenderSomething", nullptr, nullptr);
     if (window == nullptr)
@@ -68,36 +75,64 @@ int main() {
     glfwSetCursorPosCallback(window, mouse_callback);
     glfwSetScrollCallback(window, scroll_callback);
     
+    g_scene = new AbcScene("/Users/renxun/Desktop/测试素材/mesh/uv测试.abc");
+//    g_scene = new AbcScene("/Users/renxun/Desktop/测试素材/mesh/背影2-测试uv边界.abc");
+    g_scene->setTime(0);
+        
+
     //循环渲染
     while(!glfwWindowShouldClose(window)) {
         processInput(window);
         
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+        g_scene->draw();
         //交换缓存
         glfwSwapBuffers(window);
         //事件处理
         glfwPollEvents();
     }
-    
-    //停止
     glfwTerminate();
     return 0;
 }
 
 void processInput(GLFWwindow *window) {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+    {
         glfwSetWindowShouldClose(window, true);
-    
+    }
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+    {
         camera.ProcessKeyboard(FORWARD, deltaTime);
+    }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+    {
         camera.ProcessKeyboard(BACKWARD, deltaTime);
+    }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+    {
         camera.ProcessKeyboard(LEFT, deltaTime);
+    }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+    {
         camera.ProcessKeyboard(RIGHT, deltaTime);
+    }
+    if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+    {
+        currentTime -= 1.0 / 30;
+        if(currentTime < 0)
+        {
+            currentTime = 0;
+        }
+        g_scene->setTime(currentTime);
+    }
+    if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+    {
+        currentTime += 1.0 / 30;
+        if(currentTime > 6.1666666)
+        {
+            currentTime = 0;
+        }
+        g_scene->setTime(currentTime);
+    }
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes

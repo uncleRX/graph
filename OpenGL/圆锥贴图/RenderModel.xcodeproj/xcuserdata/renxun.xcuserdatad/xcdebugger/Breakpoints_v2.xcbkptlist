@@ -20,5 +20,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "984F8F97-DAFD-4189-9497-657F1922D9A7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RenderModel/lib/alembic/include/Alembic/AbcGeom/IGeomParam.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "ITypedGeomParam"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "984F8F97-DAFD-4189-9497-657F1922D9A7 - c6d178c0976402f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__cxx_global_var_init.1"
+                  moduleName = "RenderModel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/renxun/Desktop/file/Repository/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0/%E5%9B%BE%E5%BD%A2API/OpenGL/%E5%9C%86%E9%94%A5%E8%B4%B4%E5%9B%BE/RenderModel/lib/alembic/include/Alembic/AbcGeom/IGeomParam.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "444"
+                  endingLineNumber = "444"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "984F8F97-DAFD-4189-9497-657F1922D9A7 - c6d178c0976402f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__cxx_global_var_init.1"
+                  moduleName = "RenderModel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/renxun/Desktop/file/Repository/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0/%E5%9B%BE%E5%BD%A2API/OpenGL/%E5%9C%86%E9%94%A5%E8%B4%B4%E5%9B%BE/RenderModel/lib/alembic/include/Alembic/AbcGeom/IGeomParam.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "444"
+                  endingLineNumber = "444"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

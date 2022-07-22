@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7538D6382875784200645969 /* STDBuild.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7538D6362875784200645969 /* STDBuild.cpp */; };
 		753DE3FF2864375200EF3C21 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 753DE3FE2864375200EF3C21 /* main.cpp */; };
 		753DE40828643FFE00EF3C21 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 753DE40728643FFE00EF3C21 /* libglfw3.a */; };
 		753DE40F2864415E00EF3C21 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753DE40E2864415E00EF3C21 /* CoreFoundation.framework */; };
@@ -38,6 +39,11 @@
 
 /* Begin PBXFileReference section */
 		13A84C24C7D27FE86FE590E4 /* Pods_RenderModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RenderModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7538D6322875784200645969 /* stb_image_write.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image_write.h; sourceTree = "<group>"; };
+		7538D6332875784200645969 /* stb_image_resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image_resize.h; sourceTree = "<group>"; };
+		7538D6342875784200645969 /* STDBuild.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = STDBuild.hpp; sourceTree = "<group>"; };
+		7538D6352875784200645969 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		7538D6362875784200645969 /* STDBuild.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = STDBuild.cpp; sourceTree = "<group>"; };
 		753DE3FB2864375200EF3C21 /* RenderModel */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RenderModel; sourceTree = BUILT_PRODUCTS_DIR; };
 		753DE3FE2864375200EF3C21 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		753DE40728643FFE00EF3C21 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libglfw3.a; sourceTree = "<group>"; };
@@ -493,10 +499,6 @@
 		753DE5EF28646B5500EF3C21 /* animdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animdata.h; sourceTree = "<group>"; };
 		753DE5F028646B5500EF3C21 /* animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation.h; sourceTree = "<group>"; };
 		753DE5F128646B5600EF3C21 /* mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mesh.h; sourceTree = "<group>"; };
-		756B841F286C532500C48305 /* stb_image_write.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image_write.h; sourceTree = "<group>"; };
-		756B8420286C532500C48305 /* stb_image_resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image_resize.h; sourceTree = "<group>"; };
-		756B8422286C532500C48305 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
-		756B8428286C546100C48305 /* std_image_build.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = std_image_build.h; sourceTree = "<group>"; };
 		756B842A286C550500C48305 /* ByteSwapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ByteSwapper.h; sourceTree = "<group>"; };
 		756B842B286C550500C48305 /* IOSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IOSystem.hpp; sourceTree = "<group>"; };
 		756B842C286C550500C48305 /* StreamReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamReader.h; sourceTree = "<group>"; };
@@ -616,6 +618,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7538D6302875784200645969 /* Std_image */ = {
+			isa = PBXGroup;
+			children = (
+				7538D6322875784200645969 /* stb_image_write.h */,
+				7538D6332875784200645969 /* stb_image_resize.h */,
+				7538D6342875784200645969 /* STDBuild.hpp */,
+				7538D6352875784200645969 /* stb_image.h */,
+				7538D6362875784200645969 /* STDBuild.cpp */,
+			);
+			path = Std_image;
+			sourceTree = "<group>";
+		};
 		753DE3F22864375200EF3C21 = {
 			isa = PBXGroup;
 			children = (
@@ -648,7 +662,7 @@
 		753DE40528643FE300EF3C21 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				756B841D286C532500C48305 /* Std_image */,
+				7538D6302875784200645969 /* Std_image */,
 				753DE435286464E800EF3C21 /* glm */,
 				753DE42D286454AB00EF3C21 /* assimp */,
 				753DE424286446AC00EF3C21 /* glad */,
@@ -1242,18 +1256,6 @@
 			path = learnOpengl;
 			sourceTree = "<group>";
 		};
-		756B841D286C532500C48305 /* Std_image */ = {
-			isa = PBXGroup;
-			children = (
-				756B841F286C532500C48305 /* stb_image_write.h */,
-				756B8420286C532500C48305 /* stb_image_resize.h */,
-				756B8422286C532500C48305 /* stb_image.h */,
-				756B8428286C546100C48305 /* std_image_build.h */,
-			);
-			name = Std_image;
-			path = "../../../demo测试副本(供拷贝用)/OpenGL/Std_image";
-			sourceTree = "<group>";
-		};
 		756B8427286C53A500C48305 /* shader */ = {
 			isa = PBXGroup;
 			children = (
@@ -1442,6 +1444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7538D6382875784200645969 /* STDBuild.cpp in Sources */,
 				753DE5DF286464E900EF3C21 /* glm.cpp in Sources */,
 				753DE3FF2864375200EF3C21 /* main.cpp in Sources */,
 				753DE42C286446AC00EF3C21 /* glad.c in Sources */,
