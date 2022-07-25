@@ -42,7 +42,7 @@ MeshDrawHelper::MeshDrawHelper()
 
     // 初始化着色器
     this->ourShader = new Shader("/Users/renxun/Desktop/file/Repository/音视频学习/图形API/OpenGL/圆锥贴图/RenderModel/shader/simple.vs", "/Users/renxun/Desktop/file/Repository/音视频学习/图形API/OpenGL/圆锥贴图/RenderModel/shader/simple.fs");
-    this->texture = new TextureModel("/Users/renxun/Desktop/测试素材/mesh/背影2.png");
+    this->texture = new TextureModel("/Users/renxun/Desktop/file/Repository/音视频学习/图形API/OpenGL/绘制立方体/OpenGL/王路飞.jpeg");
     bool res = texture->load();
     if (!res)
     {
@@ -318,6 +318,33 @@ void MeshDrawHelper::draw() const
     int vvi = 0;
     int ci = 0;
     int uvi = 0;
+    
+    float cMaxX, cMaxY, cMinX, cMinY;
+    cMaxX = -1.0;
+    cMaxY = -1.0;
+    cMinX = 1.0;
+    cMinY = 1.0;
+    
+    for (auto value : this->m_uvCoords) {
+        if (value.x < cMinX)
+        {
+            cMinX = value.x;
+        }
+        if (value.x > cMaxX) {
+            cMaxX = value.x;
+        }
+        if (value.y < cMinY)
+        {
+            cMinY = value.y;
+        }
+        if (value.y > cMaxY)
+        {
+            cMaxY = value.y;
+        }
+    }
+    float cXLength = cMaxX - cMinX;
+    float cYLength = cMaxY - cMinY;
+    
     // 处理三角形数据
     for (int i = 0; i < m_triangles.size(); i++) {
         auto value = m_triangles[i];
@@ -327,30 +354,30 @@ void MeshDrawHelper::draw() const
         vertices[vvi+1] = p1.y;
         vertices[vvi+2] = p1.z;
         
-        coords[ci] = this->m_uvCoords[uvi].x;
-        coords[ci+1] = this->m_uvCoords[uvi].y;
+        coords[ci] = (this->m_uvCoords[uvi].x - cMinX) / cXLength;
+        coords[ci+1] = (this->m_uvCoords[uvi].y - cMinY) / cYLength;
         vvi += 3;
         uvi += 1;
         ci += 2;
 
         const V3f &p2 = (*m_meshP)[value.y];
-        vertices[vvi] = p2.x;
-        vertices[vvi+1] = p2.y;
+        vertices[vvi] = p2.x ;
+        vertices[vvi+1] = p2.y ;
         vertices[vvi+2] = p2.z;
         
-        coords[ci] = this->m_uvCoords[uvi].x;
-        coords[ci+1] = this->m_uvCoords[uvi].y;
+        coords[ci] = (this->m_uvCoords[uvi].x - cMinX) / cXLength;
+        coords[ci+1] = (this->m_uvCoords[uvi].y - cMinY) / cYLength;
         vvi += 3;
         uvi += 1;
         ci += 2;
 
         const V3f &p3 = (*m_meshP)[value.z];
         vertices[vvi] = p3.x;
-        vertices[vvi+1] = p3.y;
+        vertices[vvi+1] = p3.y ;
         vertices[vvi+2] = p3.z;
         
-        coords[ci] = this->m_uvCoords[uvi].x;
-        coords[ci+1] = this->m_uvCoords[uvi].y;
+        coords[ci] = (this->m_uvCoords[uvi].x - cMinX) / cXLength;
+        coords[ci+1] = (this->m_uvCoords[uvi].y - cMinY) / cYLength;
         vvi += 3;
         uvi += 1;
         ci += 2;
