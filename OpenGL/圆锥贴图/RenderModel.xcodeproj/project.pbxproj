@@ -17,13 +17,16 @@
 		753DE41B2864418A00EF3C21 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753DE41A2864418A00EF3C21 /* ImageIO.framework */; };
 		753DE41D2864418F00EF3C21 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753DE41C2864418F00EF3C21 /* Foundation.framework */; };
 		753DE41F286441A500EF3C21 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753DE41E286441A500EF3C21 /* IOKit.framework */; };
+		755D6ED928C882B50014BD05 /* DrawPicture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 755D6ED728C882B50014BD05 /* DrawPicture.cpp */; };
+		755D6EDC28C884EB0014BD05 /* Canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 755D6EDA28C884EB0014BD05 /* Canvas.cpp */; };
+		755D6EE228C891E10014BD05 /* DrawAlembic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 755D6EE028C891E10014BD05 /* DrawAlembic.cpp */; };
+		755D6EED28C89EEA0014BD05 /* AbcMeshDrawHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 755D6EE728C89EE30014BD05 /* AbcMeshDrawHelper.cpp */; };
+		755D6EEE28C89EEA0014BD05 /* AbcIObjectDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 755D6EE828C89EE40014BD05 /* AbcIObjectDraw.cpp */; };
+		755D6EEF28C89EEA0014BD05 /* AbcIPolyMeshDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 755D6EEB28C89EE70014BD05 /* AbcIPolyMeshDraw.cpp */; };
+		755D6EF028C89EEA0014BD05 /* AbcScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 755D6EEC28C89EE90014BD05 /* AbcScene.cpp */; };
 		75C25E552886D493000F87F8 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75DFAE83286E97740064E0D3 /* libglfw3.a */; };
 		75C25E5F28879186000F87F8 /* libImath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C25E492886CED6000F87F8 /* libImath.a */; };
 		75C25E6028879192000F87F8 /* libAlembic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C25E1E2886CE8F000F87F8 /* libAlembic.a */; };
-		75C25E642887F04C000F87F8 /* AbcMeshDrawHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75C25E622887F04C000F87F8 /* AbcMeshDrawHelper.cpp */; };
-		75C25E672887F43F000F87F8 /* ABCScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75C25E652887F43F000F87F8 /* ABCScene.cpp */; };
-		75C25E6B288809F8000F87F8 /* AbcIObjectDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75C25E69288809F8000F87F8 /* AbcIObjectDraw.cpp */; };
-		75C25E6E28880EE6000F87F8 /* AbcIPolyMeshDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75C25E6C28880EE6000F87F8 /* AbcIPolyMeshDraw.cpp */; };
 		75C25E7028893B2B000F87F8 /* TextureModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75C25E6F28893B2B000F87F8 /* TextureModel.cpp */; };
 		75DFAC50286E8CE50064E0D3 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75DFAC4F286E8CE50064E0D3 /* GLUT.framework */; };
 		75DFB02E286E97760064E0D3 /* libassimp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75DFAE75286E97740064E0D3 /* libassimp.a */; };
@@ -93,6 +96,23 @@
 		755A2F48286EF55500CB18A2 /* vertexShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertexShader.glsl; sourceTree = "<group>"; };
 		755A2F49286EF83100CB18A2 /* simple.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = simple.vs; sourceTree = "<group>"; };
 		755A2F4A286EF83100CB18A2 /* simple.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = simple.fs; sourceTree = "<group>"; };
+		755D6ED728C882B50014BD05 /* DrawPicture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DrawPicture.cpp; sourceTree = "<group>"; };
+		755D6ED828C882B50014BD05 /* DrawPicture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DrawPicture.hpp; sourceTree = "<group>"; };
+		755D6EDA28C884EB0014BD05 /* Canvas.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Canvas.cpp; sourceTree = "<group>"; };
+		755D6EDB28C884EB0014BD05 /* Canvas.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Canvas.hpp; sourceTree = "<group>"; };
+		755D6EDE28C88AC60014BD05 /* StringUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StringUtil.hpp; sourceTree = "<group>"; };
+		755D6EE028C891E10014BD05 /* DrawAlembic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DrawAlembic.cpp; sourceTree = "<group>"; };
+		755D6EE128C891E10014BD05 /* DrawAlembic.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DrawAlembic.hpp; sourceTree = "<group>"; };
+		755D6EE328C89EDF0014BD05 /* Drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drawable.h; sourceTree = "<group>"; };
+		755D6EE428C89EE00014BD05 /* AbcIPolyMeshDraw.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AbcIPolyMeshDraw.hpp; sourceTree = "<group>"; };
+		755D6EE528C89EE10014BD05 /* AbcIPolyMeshData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbcIPolyMeshData.h; sourceTree = "<group>"; };
+		755D6EE628C89EE20014BD05 /* AbcScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AbcScene.hpp; sourceTree = "<group>"; };
+		755D6EE728C89EE30014BD05 /* AbcMeshDrawHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbcMeshDrawHelper.cpp; sourceTree = "<group>"; };
+		755D6EE828C89EE40014BD05 /* AbcIObjectDraw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbcIObjectDraw.cpp; sourceTree = "<group>"; };
+		755D6EE928C89EE50014BD05 /* AbcIObjectDraw.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AbcIObjectDraw.hpp; sourceTree = "<group>"; };
+		755D6EEA28C89EE60014BD05 /* AbcMeshDrawHelper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AbcMeshDrawHelper.hpp; sourceTree = "<group>"; };
+		755D6EEB28C89EE70014BD05 /* AbcIPolyMeshDraw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbcIPolyMeshDraw.cpp; sourceTree = "<group>"; };
+		755D6EEC28C89EE90014BD05 /* AbcScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbcScene.cpp; sourceTree = "<group>"; };
 		75C25D9C2886CE8F000F87F8 /* OSchema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSchema.h; sourceTree = "<group>"; };
 		75C25D9D2886CE8F000F87F8 /* ErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorHandler.h; sourceTree = "<group>"; };
 		75C25D9E2886CE8F000F87F8 /* ICompoundProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICompoundProperty.h; sourceTree = "<group>"; };
@@ -251,15 +271,6 @@
 		75C25E442886CE96000F87F8 /* ImathNamespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImathNamespace.h; sourceTree = "<group>"; };
 		75C25E452886CE96000F87F8 /* ImathQuat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImathQuat.h; sourceTree = "<group>"; };
 		75C25E492886CED6000F87F8 /* libImath.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libImath.a; sourceTree = "<group>"; };
-		75C25E622887F04C000F87F8 /* AbcMeshDrawHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AbcMeshDrawHelper.cpp; sourceTree = "<group>"; };
-		75C25E632887F04C000F87F8 /* AbcMeshDrawHelper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AbcMeshDrawHelper.hpp; sourceTree = "<group>"; };
-		75C25E652887F43F000F87F8 /* ABCScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ABCScene.cpp; sourceTree = "<group>"; };
-		75C25E662887F43F000F87F8 /* ABCScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ABCScene.hpp; sourceTree = "<group>"; };
-		75C25E6828880922000F87F8 /* Drawable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Drawable.h; sourceTree = "<group>"; };
-		75C25E69288809F8000F87F8 /* AbcIObjectDraw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AbcIObjectDraw.cpp; sourceTree = "<group>"; };
-		75C25E6A288809F8000F87F8 /* AbcIObjectDraw.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AbcIObjectDraw.hpp; sourceTree = "<group>"; };
-		75C25E6C28880EE6000F87F8 /* AbcIPolyMeshDraw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AbcIPolyMeshDraw.cpp; sourceTree = "<group>"; };
-		75C25E6D28880EE6000F87F8 /* AbcIPolyMeshDraw.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AbcIPolyMeshDraw.hpp; sourceTree = "<group>"; };
 		75C25E6F28893B2B000F87F8 /* TextureModel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TextureModel.cpp; sourceTree = "<group>"; };
 		75C25E71288A7955000F87F8 /* 网格背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "网格背景.png"; sourceTree = "<group>"; };
 		75DFAC4F286E8CE50064E0D3 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -839,17 +850,11 @@
 			path = learnOpengl;
 			sourceTree = "<group>";
 		};
-		7538D5E0287570F400645969 /* shared */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = shared;
-			sourceTree = "<group>";
-		};
 		753DE3F22864375200EF3C21 = {
 			isa = PBXGroup;
 			children = (
 				753DE3FD2864375200EF3C21 /* RenderModel */,
+				755D6ECF28C87EF40014BD05 /* LockdownTest */,
 				753DE3FC2864375200EF3C21 /* Products */,
 				753DE40D2864415E00EF3C21 /* Frameworks */,
 			);
@@ -866,10 +871,12 @@
 		753DE3FD2864375200EF3C21 /* RenderModel */ = {
 			isa = PBXGroup;
 			children = (
-				75C25E612887F000000F87F8 /* AbcModule */,
-				7538D5E0287570F400645969 /* shared */,
-				75382CB62872C088009802EF /* learnOpengl */,
+				755D6ED628C882500014BD05 /* FastDraw */,
+				755D6ED528C880AF0014BD05 /* util */,
+				755D6EC928C87EC60014BD05 /* math */,
 				75382CB52872C07F009802EF /* Depends.h */,
+				75C25E612887F000000F87F8 /* AbcModule */,
+				75382CB62872C088009802EF /* learnOpengl */,
 				755A2F41286EDF5400CB18A2 /* Resource */,
 				75DFB039286E991E0064E0D3 /* shader */,
 				753DE40528643FE300EF3C21 /* lib */,
@@ -921,6 +928,41 @@
 				755A2F42286EDF6200CB18A2 /* 王路飞.jpeg */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		755D6EC928C87EC60014BD05 /* math */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = math;
+			sourceTree = "<group>";
+		};
+		755D6ECF28C87EF40014BD05 /* LockdownTest */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LockdownTest;
+			sourceTree = "<group>";
+		};
+		755D6ED528C880AF0014BD05 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				755D6EDE28C88AC60014BD05 /* StringUtil.hpp */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		755D6ED628C882500014BD05 /* FastDraw */ = {
+			isa = PBXGroup;
+			children = (
+				755D6ED828C882B50014BD05 /* DrawPicture.hpp */,
+				755D6ED728C882B50014BD05 /* DrawPicture.cpp */,
+				755D6EDA28C884EB0014BD05 /* Canvas.cpp */,
+				755D6EDB28C884EB0014BD05 /* Canvas.hpp */,
+				755D6EE028C891E10014BD05 /* DrawAlembic.cpp */,
+				755D6EE128C891E10014BD05 /* DrawAlembic.hpp */,
+			);
+			path = FastDraw;
 			sourceTree = "<group>";
 		};
 		75C25D982886CE8F000F87F8 /* alembic */ = {
@@ -1218,15 +1260,16 @@
 		75C25E612887F000000F87F8 /* AbcModule */ = {
 			isa = PBXGroup;
 			children = (
-				75C25E632887F04C000F87F8 /* AbcMeshDrawHelper.hpp */,
-				75C25E622887F04C000F87F8 /* AbcMeshDrawHelper.cpp */,
-				75C25E652887F43F000F87F8 /* ABCScene.cpp */,
-				75C25E662887F43F000F87F8 /* ABCScene.hpp */,
-				75C25E6828880922000F87F8 /* Drawable.h */,
-				75C25E69288809F8000F87F8 /* AbcIObjectDraw.cpp */,
-				75C25E6A288809F8000F87F8 /* AbcIObjectDraw.hpp */,
-				75C25E6C28880EE6000F87F8 /* AbcIPolyMeshDraw.cpp */,
-				75C25E6D28880EE6000F87F8 /* AbcIPolyMeshDraw.hpp */,
+				755D6EE828C89EE40014BD05 /* AbcIObjectDraw.cpp */,
+				755D6EE928C89EE50014BD05 /* AbcIObjectDraw.hpp */,
+				755D6EE528C89EE10014BD05 /* AbcIPolyMeshData.h */,
+				755D6EEB28C89EE70014BD05 /* AbcIPolyMeshDraw.cpp */,
+				755D6EE428C89EE00014BD05 /* AbcIPolyMeshDraw.hpp */,
+				755D6EE728C89EE30014BD05 /* AbcMeshDrawHelper.cpp */,
+				755D6EEA28C89EE60014BD05 /* AbcMeshDrawHelper.hpp */,
+				755D6EEC28C89EE90014BD05 /* AbcScene.cpp */,
+				755D6EE628C89EE20014BD05 /* AbcScene.hpp */,
+				755D6EE328C89EDF0014BD05 /* Drawable.h */,
 			);
 			path = AbcModule;
 			sourceTree = "<group>";
@@ -1978,13 +2021,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				75DFB031286E97760064E0D3 /* glm.cpp in Sources */,
+				755D6EF028C89EEA0014BD05 /* AbcScene.cpp in Sources */,
+				755D6EEF28C89EEA0014BD05 /* AbcIPolyMeshDraw.cpp in Sources */,
 				753DE3FF2864375200EF3C21 /* main.cpp in Sources */,
-				75C25E642887F04C000F87F8 /* AbcMeshDrawHelper.cpp in Sources */,
 				75C25E7028893B2B000F87F8 /* TextureModel.cpp in Sources */,
-				75C25E672887F43F000F87F8 /* ABCScene.cpp in Sources */,
-				75C25E6E28880EE6000F87F8 /* AbcIPolyMeshDraw.cpp in Sources */,
 				75DFB02F286E97760064E0D3 /* glad.c in Sources */,
-				75C25E6B288809F8000F87F8 /* AbcIObjectDraw.cpp in Sources */,
+				755D6EDC28C884EB0014BD05 /* Canvas.cpp in Sources */,
+				755D6EE228C891E10014BD05 /* DrawAlembic.cpp in Sources */,
+				755D6ED928C882B50014BD05 /* DrawPicture.cpp in Sources */,
+				755D6EED28C89EEA0014BD05 /* AbcMeshDrawHelper.cpp in Sources */,
+				755D6EEE28C89EEA0014BD05 /* AbcIObjectDraw.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

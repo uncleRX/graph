@@ -13,23 +13,25 @@
 #include <string>
 #include "GLUT/glut.h"
 #include "TextureModel.hpp"
-
 #include <time.h>
-#include "AbcModule/ABCScene.hpp"
+#include <math.h>
+#include "DrawPicture.hpp"
+#include "DrawAlembic.hpp"
+
 
 using namespace AbcModule;
-
+using namespace Alembic::Abc;
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow *window);
 
 // settings
-const unsigned int SCR_WIDTH = 1280;
-const unsigned int SCR_HEIGHT = 720;
+const unsigned int SCR_WIDTH = 1080/2;
+const unsigned int SCR_HEIGHT = 1920/2;
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 80.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 0.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -38,11 +40,17 @@ bool firstMouse = true;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
-float currentTime = 0;
+//String abc_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/c4d.abc";
+String abc_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/lockdown.abc";
+//String abc_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/左上lockdown.abc";
+//String abc_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/右下lockdown.abc";
+//String abc_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/无遮挡25fps.abc";
 
-AbcScene *g_scene;
+//String abc_bg_path = "/Users/renxun/Desktop/测试素材/爱思壁纸_932223.jpg;
+String abc_bg_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/bg2.png";
 
-void getConeVertext(int segmentation, float radius, float* outVertexData, int* outIndexData);
+
+String bg_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/bg.png";
 
 int main() {
     glfwInit();
@@ -75,16 +83,16 @@ int main() {
     glfwSetCursorPosCallback(window, mouse_callback);
     glfwSetScrollCallback(window, scroll_callback);
     
-    g_scene = new AbcScene("/Users/renxun/Desktop/测试素材/mesh/uv测试.abc");
-//    g_scene = new AbcScene("/Users/renxun/Desktop/测试素材/mesh/背影2-测试uv边界.abc");
-    g_scene->setTime(0);
-        
-
+    DrawOnePicture bg(bg_path);
+    DrawAlembic abc(abc_path, abc_bg_path);
+    bg.prepare();
     //循环渲染
     while(!glfwWindowShouldClose(window)) {
         processInput(window);
-        
-        g_scene->draw();
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        bg.draw();
+        abc.draw();
         //交换缓存
         glfwSwapBuffers(window);
         //事件处理
@@ -117,21 +125,9 @@ void processInput(GLFWwindow *window) {
     }
     if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
     {
-        currentTime -= 1.0 / 30;
-        if(currentTime < 0)
-        {
-            currentTime = 0;
-        }
-        g_scene->setTime(currentTime);
     }
     if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
     {
-        currentTime += 1.0 / 30;
-        if(currentTime > 6.1666666)
-        {
-            currentTime = 0;
-        }
-        g_scene->setTime(currentTime);
     }
 }
 

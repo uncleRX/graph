@@ -1,0 +1,130 @@
+//
+//  MeshDrawHelper.hpp
+//  RenderModel
+//
+//  Created by 任迅 on 2022/7/20.
+//
+
+#ifndef MeshDrawHelper_hpp
+#define MeshDrawHelper_hpp
+
+#include <stdio.h>
+#include "Alembic/Abc/All.h"
+#include "Alembic/AbcCoreFactory/All.h"
+#include "Alembic/AbcCoreOgawa/All.h"
+#include "Alembic/AbcCoreAbstract/All.h"
+#include "Alembic/AbcGeom/All.h"
+#include "TextureModel.hpp"
+#include "shader_m.h"
+
+namespace Abc = Alembic::Abc;
+using namespace Abc;
+
+namespace AbcModule
+{
+//
+//class GLRender  {
+//    GLRender();
+//    ~GLRender();
+//
+//    void updateData(GLfloat* data, )
+//
+//    void draw();
+//
+//private:
+//    GLuint m_VAO;
+//    GLuint m_VBO;
+//    gluint m_EBO;
+//}
+
+class MeshDrawHelper : private Alembic::Util::noncopyable
+{
+
+public:
+    MeshDrawHelper();
+    
+    ~MeshDrawHelper();
+    
+    // This is a "full update" of all parameters.
+    // If N is empty, normals will be computed.
+    void update( P3fArraySamplePtr iP,
+                V3fArraySamplePtr iN,
+                Int32ArraySamplePtr iIndices,
+                Int32ArraySamplePtr iCounts,
+                std::vector<size_t> uv_idxs,
+                std::vector<Imath::Vec2<float>> uv_coords,
+                Abc::Box3d iBounds
+                );
+    
+    // Update just positions and possibly normals
+    void update( P3fArraySamplePtr iP,
+                V3fArraySamplePtr iN,
+                Abc::Box3d iBounds = Abc::Box3d() );
+    
+    // Update just normals
+    void updateNormals( V3fArraySamplePtr iN );
+    
+    // This returns validity.
+    bool valid() const { return m_valid; }
+    
+    // This returns constancy.
+    bool isConstant() const { return m_isConstant; }
+    void setConstant( bool isConstant = true ) { m_isConstant = isConstant; }
+    
+    // Return the bounds.
+    
+    void draw() const;
+    
+    void drawBounds() const;
+    
+    // This is a weird thing. Just makes the helper invalid
+    // by nulling everything out. For internal use.
+    void makeInvalid();
+    
+    // full path for color overrides
+    void setFullPath(const std::string &full_path){ m_full_path = full_path; }
+    
+protected:
+    void computeBounds();
+    
+    typedef Imath::Vec3<unsigned int> Tri;
+    typedef std::vector<Tri> TriArray;
+    
+    P3fArraySamplePtr m_meshP;
+    V3fArraySamplePtr m_meshN;
+    Int32ArraySamplePtr m_meshIndices;
+    Int32ArraySamplePtr m_meshCounts;
+    
+    std::vector<V3f> m_customN;
+    
+    bool m_valid;
+    bool m_isConstant;
+    Imath::Box3d m_bounds;
+    
+    TriArray m_triangles;
+    std::string m_full_path;
+    
+    std::vector<size_t> m_uvIndices;
+    std::vector<Imath::Vec2<float>> m_uvCoords;
+    
+    // opengl临时用
+    unsigned int m_VAO;
+    unsigned int m_VBO;
+    unsigned int m_VBO1;
+    unsigned int m_EBO;
+    
+    unsigned int m_VAOBounds;
+    unsigned int m_VBOBounds;
+    
+    Shader* ourShader;
+    TextureModel* texture;
+    
+    
+private:
+    void useShader() const;
+};
+
+} // end ns
+
+
+#endif /* MeshDrawHelper_hpp */

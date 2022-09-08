@@ -14,28 +14,13 @@
 #include "Alembic/AbcCoreOgawa/All.h"
 #include "Alembic/AbcCoreAbstract/All.h"
 #include "Alembic/AbcGeom/All.h"
-#include "TextureModel.hpp"
-#include "shader_m.h"
+#include "AbcIPolyMeshData.h"
 
 namespace Abc = Alembic::Abc;
 using namespace Abc;
 
 namespace AbcModule
 {
-//
-//class GLRender  {
-//    GLRender();
-//    ~GLRender();
-//
-//    void updateData(GLfloat* data, )
-//
-//    void draw();
-//
-//private:
-//    GLuint m_VAO;
-//    GLuint m_VBO;
-//    gluint m_EBO;
-//}
 
 class MeshDrawHelper : private Alembic::Util::noncopyable
 {
@@ -47,7 +32,7 @@ public:
     
     // This is a "full update" of all parameters.
     // If N is empty, normals will be computed.
-    void update( P3fArraySamplePtr iP,
+    void update(P3fArraySamplePtr iP,
                 V3fArraySamplePtr iN,
                 Int32ArraySamplePtr iIndices,
                 Int32ArraySamplePtr iCounts,
@@ -70,9 +55,9 @@ public:
     // This returns constancy.
     bool isConstant() const { return m_isConstant; }
     void setConstant( bool isConstant = true ) { m_isConstant = isConstant; }
-    
-    // Return the bounds.
-    
+
+    AbcIPolyMeshData getCurrentIPolyMeshData();
+
     void draw() const;
     
     // This is a weird thing. Just makes the helper invalid
@@ -87,12 +72,11 @@ protected:
     
     typedef Imath::Vec3<unsigned int> Tri;
     typedef std::vector<Tri> TriArray;
-    
+
     P3fArraySamplePtr m_meshP;
     V3fArraySamplePtr m_meshN;
     Int32ArraySamplePtr m_meshIndices;
     Int32ArraySamplePtr m_meshCounts;
-    
     std::vector<V3f> m_customN;
     
     bool m_valid;
@@ -104,14 +88,6 @@ protected:
     
     std::vector<size_t> m_uvIndices;
     std::vector<Imath::Vec2<float>> m_uvCoords;
-    
-    // opengl临时用
-    unsigned int m_VAO;
-    unsigned int m_VBO;
-    unsigned int m_VBO1;
-    unsigned int m_EBO;
-    Shader* ourShader;
-    TextureModel* texture;
 };
 
 } // end ns

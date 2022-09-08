@@ -33,7 +33,10 @@ public:
     virtual void setTime( chrono_t iSeconds );
 
     virtual void draw();
-    
+
+    // 获取当前可用图元的渲染数据
+    AbcIPolyMeshData getCurrentIPolyMeshData();
+
 protected:
 
     IPolyMesh m_polyMesh;
@@ -44,11 +47,5 @@ protected:
 };
 
 }
-
-
-
-
-
-
 
 #endif /* IPolyMeshDraw_hpp */

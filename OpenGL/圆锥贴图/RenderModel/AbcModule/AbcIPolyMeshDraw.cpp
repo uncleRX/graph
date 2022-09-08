@@ -21,9 +21,7 @@ AbcIPolyMeshDraw::AbcIPolyMeshDraw(IPolyMesh &iPmesh) : AbcIObjectDraw( iPmesh, 
         return;
     }
     
-    // set constancy on the mesh draw helper
     m_drwHelper.setConstant( m_polyMesh.getSchema().isConstant() );
-    
     if ( m_polyMesh.getSchema().getNumSamples() > 0 )
     {
         m_polyMesh.getSchema().get( m_samp );
@@ -138,11 +136,14 @@ void AbcIPolyMeshDraw::setTime( chrono_t iSeconds)
                        indices, counts, uv_idxs,uv_coords, bounds );
     
     // TODO: bounds
-    //      if ( !m_drwHelper.getBounds().isEmpty() )
-    //      {
-    //          m_bounds.extendBy( m_drwHelper.getBounds() );
-    //      }
+
 }
+
+AbcIPolyMeshData AbcIPolyMeshDraw::getCurrentIPolyMeshData()
+{
+    return this->m_drwHelper.getCurrentIPolyMeshData();
+}
+
 
 void AbcIPolyMeshDraw::draw()
 {

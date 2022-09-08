@@ -7,67 +7,23 @@
 
 #include "AbcMeshDrawHelper.hpp"
 
-#include "TextureModel.hpp"
-
-
 using namespace AbcModule;
-
-
-//GLRender::GLRender
-//{
-//    
-//}
-//
-//GLRender::~GLRender()
-//{
-//    
-//}
 
 //-*****************************************************************************
 MeshDrawHelper::MeshDrawHelper()
 {
     makeInvalid();
-    
-    // 初始化数据
-    glEnable(GL_DEPTH_TEST);
-    unsigned int VAO,VBO,VBO1,EBO;
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    glGenBuffers(1, &VBO1);
-    glGenBuffers(1, &EBO);
-    this->m_VAO = VAO;
-    this->m_VBO = VBO;
-    this->m_EBO = EBO;
-    this->m_VBO1 = VBO1;
-
-    // 初始化着色器
-    this->ourShader = new Shader("/Users/renxun/Desktop/file/Repository/音视频学习/图形API/OpenGL/圆锥贴图/RenderModel/shader/simple.vs", "/Users/renxun/Desktop/file/Repository/音视频学习/图形API/OpenGL/圆锥贴图/RenderModel/shader/simple.fs");
-    this->texture = new TextureModel("/Users/renxun/Desktop/file/Repository/音视频学习/图形API/OpenGL/绘制立方体/OpenGL/王路飞.jpeg");
-    bool res = texture->load();
-    if (!res)
-    {
-        std::cout << "纹理加载失败" << std::endl;
-        return ;
-    }
-    ourShader->use();
-    ourShader->setInt("texture1", 0);
-    
-//    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 }
 
 //-*****************************************************************************
 MeshDrawHelper::~MeshDrawHelper()
 {
     makeInvalid();
-    delete this->texture;
-    delete this->ourShader;
-    this->texture = nullptr;
-    this->ourShader = nullptr;
 }
 
 //-*****************************************************************************
 
-void MeshDrawHelper::update( P3fArraySamplePtr iP,
+void MeshDrawHelper::update(P3fArraySamplePtr iP,
                             V3fArraySamplePtr iN,
                             Int32ArraySamplePtr iIndices,
                             Int32ArraySamplePtr iCounts,
@@ -196,14 +152,7 @@ void MeshDrawHelper::update( P3fArraySamplePtr iP,
             }
         }
     }
-
-    // Cool, we made triangles.
-    // Pretend the mesh is made...
     m_valid = true;
-
-    // And now update just the P and N, which will update bounds
-    // and calculate new normals if necessary.
-
     if ( iBounds.isEmpty() )
     {
         computeBounds();
@@ -212,10 +161,7 @@ void MeshDrawHelper::update( P3fArraySamplePtr iP,
     {
         m_bounds = iBounds;
     }
-
     updateNormals( iN );
-
-    // And that's it.
 }
 
 //-*****************************************************************************
@@ -244,8 +190,6 @@ void MeshDrawHelper::update( P3fArraySamplePtr iP,
     }
 
     updateNormals( iN );
-    
-    
 }
 
 //-*****************************************************************************
@@ -302,123 +246,97 @@ void MeshDrawHelper::updateNormals( V3fArraySamplePtr iN )
     }
 }
 
+AbcIPolyMeshData MeshDrawHelper::getCurrentIPolyMeshData()
+{
+    AbcIPolyMeshData meshData;
+    // 更新数据
+    if ( !m_valid || m_triangles.size() < 1 || !m_meshP )
+    {
+        return meshData;
+    }
+    int numPoints = m_meshP->size();
+    int indicesCount = m_triangles.size() * 3;
+    
+    meshData.vertices.resize(indicesCount * 3);
+    meshData.uvs.resize(indicesCount * 2);
+  
+//    float cMaxX, cMaxY, cMinX, cMinY;
+//    cMaxX = -1.0;
+//    cMaxY = -1.0;
+//    cMinX = 1.0;
+//    cMinY = 1.0;
+//
+//    for (auto value : this->m_uvCoords) {
+//        if (value.x < cMinX)
+//        {
+//            cMinX = value.x;
+//        }
+//        if (value.x > cMaxX) {
+//            cMaxX = value.x;
+//        }
+//        if (value.y < cMinY)
+//        {
+//            cMinY = value.y;
+//        }
+//        if (value.y > cMaxY)
+//        {
+//            cMaxY = value.y;
+//        }
+//    }
+//    float cXLength = cMaxX - cMinX;
+//    float cYLength = cMaxY - cMinY;
+
+    int uvi = 0;
+    int vi = 0;
+    int uvsI = 0;
+
+    // 处理三角形数据
+    for (int i = 0; i < m_triangles.size(); i++) {
+        auto value = m_triangles[i];
+
+        const V3f &p1 = (*m_meshP)[value.x];
+        meshData.vertices[vi] = (p1.x);
+        meshData.vertices[vi + 1] = (p1.y);
+        meshData.vertices[vi + 2] = (p1.z);
+        meshData.uvs[uvsI] = this->m_uvCoords[uvi].x;
+        meshData.uvs[uvsI +1] = this->m_uvCoords[uvi].y;
+        uvi += 1;
+        vi += 3;
+        uvsI += 2;
+        
+        const V3f &p2 = (*m_meshP)[value.y];
+        meshData.vertices[vi] = (p2.x);
+        meshData.vertices[vi + 1] = (p2.y);
+        meshData.vertices[vi + 2] = (p2.z);
+        meshData.uvs[uvsI] = this->m_uvCoords[uvi].x;
+        meshData.uvs[uvsI + 1] = this->m_uvCoords[uvi].y;
+        
+        uvi += 1;
+        vi += 3;
+        uvsI += 2;
+        
+        const V3f &p3 = (*m_meshP)[value.z];
+        meshData.vertices[vi] = p3.x;
+        meshData.vertices[vi + 1] = p3.y;
+        meshData.vertices[vi + 2] = p3.z;
+        meshData.uvs[uvsI] = this->m_uvCoords[uvi].x;
+        meshData.uvs[uvsI +1]= this->m_uvCoords[uvi].y;
+        uvi += 1;
+        vi += 3;
+        uvsI += 2;
+    }
+    meshData.vertexCount = indicesCount;
+    meshData.uvsCount = indicesCount;
+    // TODO: 待实现
+    meshData.frame = 0;
+    meshData.name = "";
+    return meshData;
+}
 
 //-*****************************************************************************
 void MeshDrawHelper::draw() const
 {
-    if ( !m_valid || m_triangles.size() < 1 || !m_meshP )
-    {
-        return;
-    }
-    int numPoints = m_meshP->size();
-    int indicesCount = m_triangles.size()* 3;
-    GLfloat vertices[indicesCount * 3];
-    GLfloat coords[indicesCount * 2];
-    
-    int vvi = 0;
-    int ci = 0;
-    int uvi = 0;
-    
-    float cMaxX, cMaxY, cMinX, cMinY;
-    cMaxX = -1.0;
-    cMaxY = -1.0;
-    cMinX = 1.0;
-    cMinY = 1.0;
-    
-    for (auto value : this->m_uvCoords) {
-        if (value.x < cMinX)
-        {
-            cMinX = value.x;
-        }
-        if (value.x > cMaxX) {
-            cMaxX = value.x;
-        }
-        if (value.y < cMinY)
-        {
-            cMinY = value.y;
-        }
-        if (value.y > cMaxY)
-        {
-            cMaxY = value.y;
-        }
-    }
-    float cXLength = cMaxX - cMinX;
-    float cYLength = cMaxY - cMinY;
-    
-    // 处理三角形数据
-    for (int i = 0; i < m_triangles.size(); i++) {
-        auto value = m_triangles[i];
-        
-        const V3f &p1 = (*m_meshP)[value.x];
-        vertices[vvi] = p1.x;
-        vertices[vvi+1] = p1.y;
-        vertices[vvi+2] = p1.z;
-        
-        coords[ci] = (this->m_uvCoords[uvi].x - cMinX) / cXLength;
-        coords[ci+1] = (this->m_uvCoords[uvi].y - cMinY) / cYLength;
-        vvi += 3;
-        uvi += 1;
-        ci += 2;
 
-        const V3f &p2 = (*m_meshP)[value.y];
-        vertices[vvi] = p2.x ;
-        vertices[vvi+1] = p2.y ;
-        vertices[vvi+2] = p2.z;
-        
-        coords[ci] = (this->m_uvCoords[uvi].x - cMinX) / cXLength;
-        coords[ci+1] = (this->m_uvCoords[uvi].y - cMinY) / cYLength;
-        vvi += 3;
-        uvi += 1;
-        ci += 2;
-
-        const V3f &p3 = (*m_meshP)[value.z];
-        vertices[vvi] = p3.x;
-        vertices[vvi+1] = p3.y ;
-        vertices[vvi+2] = p3.z;
-        
-        coords[ci] = (this->m_uvCoords[uvi].x - cMinX) / cXLength;
-        coords[ci+1] = (this->m_uvCoords[uvi].y - cMinY) / cYLength;
-        vvi += 3;
-        uvi += 1;
-        ci += 2;
-
-    }
-    
-    glBindVertexArray(m_VAO);
-
-    static bool isFirst = true;
-    if (isFirst)
-    {
-        glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-        glEnableVertexAttribArray(0);
-        
-        glBindBuffer(GL_ARRAY_BUFFER, m_VBO1);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(coords), coords, GL_STATIC_DRAW);
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)(0));
-        glEnableVertexAttribArray(1);
-        isFirst = false;
-    }
-    else
-    {
-        glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
-
-        glBindBuffer(GL_ARRAY_BUFFER, m_VBO1);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(coords), coords);
-    }
-    
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, this->texture->textureID);
-
-    this->ourShader->use();
-    glBindVertexArray(this->m_VAO);
-    glDrawArrays(GL_TRIANGLES, 0 , indicesCount);
-//        glDrawElements(GL_TRIANGLES, indicesCount, GL_UNSIGNED_INT, 0);
 }
 
 //-*****************************************************************************
