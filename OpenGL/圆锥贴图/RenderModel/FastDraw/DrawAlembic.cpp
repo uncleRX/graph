@@ -51,6 +51,15 @@ void DrawAlembic::draw()
     unsigned long verticeSize = meshData.vertices.size() * sizeof(float);
     unsigned long uvSize = meshData.uvs.size() * sizeof(float);
     
+    int i = 1;
+    for (float& y : meshData.uvs)
+    {
+        if(i % 2 == 0)
+        {
+            y = 1.0 - y;
+        }
+        i++;
+    }
     if (isFirst)
     {
         glBindBuffer(GL_ARRAY_BUFFER, VBO1);

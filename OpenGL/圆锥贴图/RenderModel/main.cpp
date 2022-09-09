@@ -41,14 +41,20 @@ float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
 //String abc_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/c4d.abc";
-String abc_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/lockdown.abc";
+//String abc_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/lockdown.abc";
+
+String abc_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/lockdown_中间.abc";
 //String abc_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/左上lockdown.abc";
+//String abc_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/lockdown_3个点.abc";
+
+//String abc_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/lockdown底部.abc";
+
 //String abc_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/右下lockdown.abc";
 //String abc_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/无遮挡25fps.abc";
 
-//String abc_bg_path = "/Users/renxun/Desktop/测试素材/爱思壁纸_932223.jpg;
-String abc_bg_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/bg2.png";
-
+//String abc_bg_path = "/Users/renxun/Desktop/测试素材/爱思壁纸_932223.jpg";
+//String abc_bg_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/bg_左上.png";
+String abc_bg_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/bg_4.png";
 
 String bg_path = "/Users/renxun/Desktop/测试素材/跟踪尺寸测试/1080x1920/bg.png";
 

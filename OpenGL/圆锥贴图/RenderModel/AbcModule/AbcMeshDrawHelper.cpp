@@ -57,9 +57,10 @@ void MeshDrawHelper::update(P3fArraySamplePtr iP,
     m_meshP = iP;
     m_meshIndices = iIndices;
     m_meshCounts = iCounts;
-    m_uvCoords = uv_coords;
+//    m_uvCoords = uv_coords;
     m_uvIndices = uv_idxs;
     m_triangles.clear ();
+    m_uvCoords.clear();
 
     // Check stuff.
     if ( !m_meshP ||
@@ -142,6 +143,11 @@ void MeshDrawHelper::update(P3fArraySamplePtr iP,
                 Tri( ( unsigned int )(*m_meshIndices)[faceIndexBegin+0],
                      ( unsigned int )(*m_meshIndices)[faceIndexBegin+1],
                      ( unsigned int )(*m_meshIndices)[faceIndexBegin+2] ) );
+                
+                m_uvCoords.push_back(uv_coords[faceIndexBegin+0]);
+                m_uvCoords.push_back(uv_coords[faceIndexBegin+1]);
+                m_uvCoords.push_back(uv_coords[faceIndexBegin+2]);
+                
             for ( size_t c = 3; c < count; ++c )
             {
                 m_triangles.push_back(
@@ -149,6 +155,9 @@ void MeshDrawHelper::update(P3fArraySamplePtr iP,
                          ( unsigned int )(*m_meshIndices)[faceIndexBegin+c-1],
                          ( unsigned int )(*m_meshIndices)[faceIndexBegin+c]
                          ) );
+                m_uvCoords.push_back(uv_coords[faceIndexBegin+0]);
+                m_uvCoords.push_back(uv_coords[faceIndexBegin+c-1]);
+                m_uvCoords.push_back(uv_coords[faceIndexBegin+c]);
             }
         }
     }
@@ -254,42 +263,11 @@ AbcIPolyMeshData MeshDrawHelper::getCurrentIPolyMeshData()
     {
         return meshData;
     }
-    int numPoints = m_meshP->size();
-    int indicesCount = m_triangles.size() * 3;
-    
+    unsigned long indicesCount = m_triangles.size() * 3;
     meshData.vertices.resize(indicesCount * 3);
-    meshData.uvs.resize(indicesCount * 2);
+    meshData.uvs.resize(this->m_uvCoords.size() * 2);
   
-//    float cMaxX, cMaxY, cMinX, cMinY;
-//    cMaxX = -1.0;
-//    cMaxY = -1.0;
-//    cMinX = 1.0;
-//    cMinY = 1.0;
-//
-//    for (auto value : this->m_uvCoords) {
-//        if (value.x < cMinX)
-//        {
-//            cMinX = value.x;
-//        }
-//        if (value.x > cMaxX) {
-//            cMaxX = value.x;
-//        }
-//        if (value.y < cMinY)
-//        {
-//            cMinY = value.y;
-//        }
-//        if (value.y > cMaxY)
-//        {
-//            cMaxY = value.y;
-//        }
-//    }
-//    float cXLength = cMaxX - cMinX;
-//    float cYLength = cMaxY - cMinY;
-
-    int uvi = 0;
     int vi = 0;
-    int uvsI = 0;
-
     // 处理三角形数据
     for (int i = 0; i < m_triangles.size(); i++) {
         auto value = m_triangles[i];
@@ -298,35 +276,31 @@ AbcIPolyMeshData MeshDrawHelper::getCurrentIPolyMeshData()
         meshData.vertices[vi] = (p1.x);
         meshData.vertices[vi + 1] = (p1.y);
         meshData.vertices[vi + 2] = (p1.z);
-        meshData.uvs[uvsI] = this->m_uvCoords[uvi].x;
-        meshData.uvs[uvsI +1] = this->m_uvCoords[uvi].y;
-        uvi += 1;
         vi += 3;
-        uvsI += 2;
         
         const V3f &p2 = (*m_meshP)[value.y];
         meshData.vertices[vi] = (p2.x);
         meshData.vertices[vi + 1] = (p2.y);
         meshData.vertices[vi + 2] = (p2.z);
-        meshData.uvs[uvsI] = this->m_uvCoords[uvi].x;
-        meshData.uvs[uvsI + 1] = this->m_uvCoords[uvi].y;
-        
-        uvi += 1;
         vi += 3;
-        uvsI += 2;
-        
+
         const V3f &p3 = (*m_meshP)[value.z];
         meshData.vertices[vi] = p3.x;
         meshData.vertices[vi + 1] = p3.y;
         meshData.vertices[vi + 2] = p3.z;
-        meshData.uvs[uvsI] = this->m_uvCoords[uvi].x;
-        meshData.uvs[uvsI +1]= this->m_uvCoords[uvi].y;
-        uvi += 1;
         vi += 3;
+    }
+    
+    // 更新纹理数据
+    int uvsI = 0;
+    for (int i = 0; i < this->m_uvCoords.size(); i++) {
+        const V2f &uv = this->m_uvCoords[i];
+        meshData.uvs[uvsI] = uv.x;
+        meshData.uvs[uvsI +1] = uv.y;
         uvsI += 2;
     }
-    meshData.vertexCount = indicesCount;
-    meshData.uvsCount = indicesCount;
+    meshData.vertexCount = (int)indicesCount;
+    meshData.uvsCount = (int)indicesCount;
     // TODO: 待实现
     meshData.frame = 0;
     meshData.name = "";

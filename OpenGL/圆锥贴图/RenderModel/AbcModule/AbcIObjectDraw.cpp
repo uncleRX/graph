@@ -138,12 +138,11 @@ void AbcIObjectDraw::readMochaMeshData(std::vector<AbcIPolyMeshData>& datas)
             meshData.vertices[i] = nvX / scaleX;
             meshData.vertices[i+1] = nvY / scaleY;
         }
-        
         for (int i = 0; i < meshData.uvs.size(); i+=2)
         {
             // uv处理
             float oldY = meshData.uvs[i + 1];
-            meshData.uvs[i+1] = (1.0- oldY);
+            meshData.uvs[i+1] = (1.0 - oldY);
         }
     }
 }
@@ -177,10 +176,9 @@ void AbcIObjectDraw::readLockDownMeshData(std::vector<AbcIPolyMeshData>& datas, 
         {
             // uv处理
             float oldY = meshData.uvs[i + 1];
-            meshData.uvs[i+1] = (oldY);
+            meshData.uvs[i+1] = 1.0 - oldY;
         }
     }
-    
 }
 
 void AbcIObjectDraw::readOriginalIPolyMeshDatas(std::vector<AbcIPolyMeshData>& datas)
